@@ -7,20 +7,25 @@ var direction = 0
 var target_direction = Vector2(0,0)
 var brake_factor = 2.0
 var sprite: Sprite2D
+var shoot_direction: Vector2
+var bullet_speed_multiplier = 1.0
 
-var bullet_scene = preload("res://objects/normal_bullet.tscn")
+var weapons = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Ready")
 	sprite = $Sprite2D
+	weapons.append($Ak47)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Update pos
 	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	print(target_direction)
 	direction = target_direction
-	if direction.length() > 0.1:
+	if target_direction.length() > 0.1:
+		shoot_direction = target_direction.normalized()	
 		speed += acceleration*delta*direction
 		sprite.rotation = direction.angle()
 	speed *= 0.95
@@ -30,11 +35,10 @@ func _process(delta):
 	position += speed
 
 	if Input.is_action_pressed("key_shoot"):
-		shoot()			
+		shoot()
 
 
 func shoot():
-	var bullet = bullet_scene.instantiate()
-	bullet.init(1, target_direction)
-	get_tree().root.add_child(bullet)
-
+	for weapon in weapons:
+		weapon.update_stats(self)
+		weapon.shoot()	

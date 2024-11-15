@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c75bvt1bu8dpu"]
+
+[ext_resource type="Script" path="res://objects/weapons/ak_47.gd" id="1_jvytg"]
+
+[node name="Ak47" type="Node2D"]
+script = ExtResource("1_jvytg")
