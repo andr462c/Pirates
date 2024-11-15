@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://q5u4as6diy4s"]
 
 [ext_resource type="Script" path="res://objects/bullets/normal_bullet.gd" id="1_rbyow"]
-[ext_resource type="Texture2D" uid="uid://cmamwrahhoykx" path="res://icon.svg" id="2_xn632"]
+[ext_resource type="Texture2D" uid="uid://u7yjn7qofnti" path="res://assets/boat/bullet.png" id="2_ec1pg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3xov"]
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxr8f"]
-radius = 7.0
+radius = 1.0
 
 [node name="NormalBullet" type="RigidBody2D"]
 collision_layer = 2
-mass = 0.009
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_f3xov")
 gravity_scale = 0.0
 continuous_cd = 1
@@ -21,8 +21,7 @@ script = ExtResource("1_rbyow")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_xn632")
+texture = ExtResource("2_ec1pg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mxr8f")

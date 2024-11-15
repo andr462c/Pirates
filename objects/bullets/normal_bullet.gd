@@ -19,7 +19,9 @@ func _ready():
 
 
 func _on_body_entered(body):
-	queue_free()	
+	# body.apply_impulse(direction*400, global_position)
+	# queue_free()
+	pass
 	
 
 

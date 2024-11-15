@@ -48,3 +48,11 @@ key_direction={
 [layer_names]
 
 2d_physics/layer_2="bulletlayer"
+
+[physics]
+
+2d/default_gravity_vector=Vector2(0, 0)
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

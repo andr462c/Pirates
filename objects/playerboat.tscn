@@ -1,24 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7y3wycwnie7d"]
 
 [ext_resource type="Script" path="res://objects/playerboat.gd" id="1_nphoy"]
-[ext_resource type="Texture2D" uid="uid://cmamwrahhoykx" path="res://icon.svg" id="2_wq63n"]
+[ext_resource type="Texture2D" uid="uid://d4ixbobcprqbj" path="res://assets/boat/rubberboat.png" id="2_0x2yp"]
 [ext_resource type="PackedScene" uid="uid://c75bvt1bu8dpu" path="res://objects/weapons/ak47.tscn" id="3_aoqy5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0dki"]
-size = Vector2(127, 123)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgfhq"]
+radius = 8.51469
 
 [node name="Playerboat" type="RigidBody2D"]
+mass = 150.0
 gravity_scale = 0.0
 linear_damp = 10.0
 script = ExtResource("1_nphoy")
 acceleration = 5000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2.5)
-shape = SubResource("RectangleShape2D_y0dki")
+shape = SubResource("CircleShape2D_qgfhq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wq63n")
+texture = ExtResource("2_0x2yp")
 
 [node name="Ak47" parent="." instance=ExtResource("3_aoqy5")]
-position = Vector2(-2, -85)
+position = Vector2(0, -14)
