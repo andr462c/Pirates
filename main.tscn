@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cck4qlq0k31d2"]
+
+[ext_resource type="PackedScene" uid="uid://b7y3wycwnie7d" path="res://objects/playerboat.tscn" id="1_mah4u"]
+[ext_resource type="PackedScene" uid="uid://qkj8cirhlbuu" path="res://objects/obstacles/container.tscn" id="2_yniep"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Playerboat" parent="." instance=ExtResource("1_mah4u")]
+position = Vector2(125, 88)
+
+[node name="Container" parent="." instance=ExtResource("2_yniep")]
+position = Vector2(627, 199)

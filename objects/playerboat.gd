@@ -1,8 +1,8 @@
-extends Node2D
+extends RigidBody2D
 
 var speed = Vector2(0,0)
 var max_speed = 150
-var acceleration = 50
+@export var acceleration = 50
 var direction = 0
 var target_direction = Vector2(0,0)
 var brake_factor = 2.0
@@ -14,25 +14,43 @@ var weapons = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Ready")
 	sprite = $Sprite2D
 	weapons.append($Ak47)
 
+func _integrate_forces(state):
+	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	# Update pos
 	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	print(target_direction)
-	direction = target_direction
 	if target_direction.length() > 0.1:
 		shoot_direction = target_direction.normalized()	
-		speed += acceleration*delta*direction
-		sprite.rotation = direction.angle()
-	speed *= 0.95
+		direction = target_direction
+		set_constant_force(direction*acceleration)
+	else:
+		set_constant_force(Vector2(0,0))
 
-	if speed.length() > max_speed:
-		speed = speed.limit_length(max_speed)
-	position += speed
+
+
+	if linear_velocity.length() > 0.1:  # Avoid rotating if the object is nearly stationary
+		var target_angle = atan2(direction.x, -direction.y)
+		var current_angle = rotation
+		var angle_diff = target_angle - current_angle
+
+		# Normalize angle_diff to the range [-PI, PI]
+		angle_diff = wrapf(angle_diff, -PI, PI)
+	
+		# Apply angular velocity or torque to rotate toward the target angle
+		angle_diff = clamp(angle_diff, -PI/12, PI/12)
+		angular_velocity = angle_diff / delta
+		# speed += acceleration*delta*direction
+		# sprite.rotation = direction.angle()
+	# speed *= 0.95
+
+	# if speed.length() > max_speed:
+	# 	speed = speed.limit_length(max_speed)
+	# position += speed
 
 	if Input.is_action_pressed("key_shoot"):
 		shoot()
