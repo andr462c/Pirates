@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://q5u4as6diy4s"]
+[gd_scene load_steps=3 format=3 uid="uid://q5u4as6diy4s"]
+
+[ext_resource type="Script" path="res://objects/normal_bullet.gd" id="1_rbyow"]
+[ext_resource type="Texture2D" uid="uid://cmamwrahhoykx" path="res://icon.svg" id="2_xn632"]
 
 [node name="NormalBullet" type="Node2D"]
+script = ExtResource("1_rbyow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xn632")

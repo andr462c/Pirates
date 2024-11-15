@@ -30,7 +30,7 @@ func _process(delta):
 	position += speed
 
 	if Input.is_action_pressed("key_shoot"):
-		shoot()
+		shoot()			
 
 
 func shoot():
