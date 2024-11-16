@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnc1lt6svw0cx"]
+[gd_scene load_steps=3 format=3 uid="uid://wxacjipmxvjg"]
 
-[ext_resource type="PackedScene" uid="uid://c2ci8t6m6d6ne" path="res://objects/enemies/Enemy.tscn" id="1_a3461"]
+[ext_resource type="PackedScene" uid="uid://dv73jsbokbm6n" path="res://objects/people/pirate.tscn" id="1_2fk2q"]
+[ext_resource type="PackedScene" uid="uid://doqs7cw0jqufe" path="res://objects/people/fisherman.tscn" id="2_jx1tp"]
 
 [node name="FrankTestScene" type="Node2D"]
+position = Vector2(1, 1)
 
-[node name="Enemy" parent="." instance=ExtResource("1_a3461")]
+[node name="Fisherman" parent="." instance=ExtResource("2_jx1tp")]
+position = Vector2(155, 189)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Pirate" parent="Players" instance=ExtResource("1_2fk2q")]
+position = Vector2(183, 79)
+
+[node name="Pirate2" parent="Players" instance=ExtResource("1_2fk2q")]
+position = Vector2(63, 83)

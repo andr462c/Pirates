@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv73jsbokbm6n"]
+
+[ext_resource type="Texture2D" uid="uid://cineisdtsbkts" path="res://assets/people/somali.png" id="1_1mdom"]
+
+[node name="Pirate" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1mdom")
