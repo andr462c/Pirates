@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://doqs7cw0jqufe"]
+
+[ext_resource type="Texture2D" uid="uid://cineisdtsbkts" path="res://assets/people/somali.png" id="1_xtraq"]
+[ext_resource type="Texture2D" uid="uid://dmr0ba6bf82gc" path="res://assets/people/shotgun.png" id="2_rqcjp"]
+
+[node name="Fisherman" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xtraq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, -6)
+texture = ExtResource("2_rqcjp")
