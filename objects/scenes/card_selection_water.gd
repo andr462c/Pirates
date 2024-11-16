@@ -80,4 +80,5 @@ func confirm_selection():
 	var controller = get_node("../Controller")
 	controller.level += 1
 	controller.construct_enemies()
+	controller.won = false
 	
