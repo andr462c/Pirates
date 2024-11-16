@@ -2,8 +2,8 @@ extends RigidBody2D
 
 var speed = Vector2(0,0)
 var max_speed = 150
-@export var acceleration = 50
-var direction = 0
+@export var acceleration = 500000
+var direction = Vector2(1,0)
 var target_direction = Vector2(0,0)
 var brake_factor = 2.0
 var sprite: Sprite2D
@@ -16,6 +16,7 @@ var weapons = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
+	gravity_scale = 0
 	#weapons.append($Ak47)
 	#weapons.append($Shotgun)
 	weapons.append($Rpg)
