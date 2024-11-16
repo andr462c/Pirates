@@ -1,26 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://b082pjfvj01g5"]
+[gd_scene load_steps=4 format=3 uid="uid://b082pjfvj01g5"]
 
-[ext_resource type="Texture2D" uid="uid://cmamwrahhoykx" path="res://icon.svg" id="1_b52cw"]
+[ext_resource type="Texture2D" uid="uid://og2346dwsh1s" path="res://assets/cards/hpunder.png" id="1_w2iw7"]
 [ext_resource type="Script" path="res://objects/scenes/texture_progress_bar.gd" id="2_m10dm"]
+[ext_resource type="Texture2D" uid="uid://cbg1dnulx5ijn" path="res://assets/cards/hpprogress.png" id="2_wym1w"]
 
 [node name="Healthbar" type="CanvasLayer"]
 
 [node name="EnemyHealth" type="TextureProgressBar" parent="."]
-offset_right = 128.0
-offset_bottom = 128.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 1.0
+offset_right = 76.0
+offset_bottom = 22.0
+grow_horizontal = 2
 value = 100.0
-texture_progress = ExtResource("1_b52cw")
+nine_patch_stretch = true
+texture_under = ExtResource("1_w2iw7")
+texture_progress = ExtResource("2_wym1w")
 script = ExtResource("2_m10dm")
 
 [node name="P0Health" type="TextureProgressBar" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 128.0
+offset_top = -15.0
+offset_right = 93.0
 grow_vertical = 0
 value = 100.0
-texture_progress = ExtResource("1_b52cw")
+nine_patch_stretch = true
+texture_under = ExtResource("1_w2iw7")
+texture_progress = ExtResource("2_wym1w")
 script = ExtResource("2_m10dm")
 
 [node name="P1Health" type="TextureProgressBar" parent="."]
@@ -29,10 +40,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
+offset_left = -78.0
+offset_top = -14.0
 grow_horizontal = 0
 grow_vertical = 0
 value = 100.0
-texture_progress = ExtResource("1_b52cw")
+nine_patch_stretch = true
+texture_under = ExtResource("1_w2iw7")
+texture_progress = ExtResource("2_wym1w")
 script = ExtResource("2_m10dm")
