@@ -16,7 +16,8 @@ var weapons = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
-	weapons.append($Ak47)
+	#weapons.append($Ak47)
+	weapons.append($Shotgun)
 
 func _integrate_forces(state):
 	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
