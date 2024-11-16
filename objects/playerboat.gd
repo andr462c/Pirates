@@ -80,7 +80,7 @@ func _physics_process(delta):
 	# position += speed
 	if Input.is_action_just_pressed("ui_accept"):
 		preload("res://objects/modifiers/rpg_upgrade.tscn").instantiate().modify_player(self)
-	if Input.is_action_pressed("key_jump") and not jumping and jumptimer.is_stopped():
+	if Input.is_action_pressed("key_jump_%d" % id) and not jumping and jumptimer.is_stopped():
 		jump_sound.play()
 		jumping = true
 		z_speed = 0.1
