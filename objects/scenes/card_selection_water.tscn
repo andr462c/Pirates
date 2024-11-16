@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgbv0cnuwksl"]
+
+[ext_resource type="Script" path="res://objects/scenes/card_selection_water.gd" id="1_akldy"]
+[ext_resource type="Texture2D" uid="uid://dl5v5ndehpi6l" path="res://assets/cards/CardTestShip.png" id="1_qwli6"]
+[ext_resource type="Texture2D" uid="uid://cmamwrahhoykx" path="res://icon.svg" id="3_lmgsb"]
+[ext_resource type="PackedScene" uid="uid://b8jys3ki7r73p" path="res://objects/sounds/ui_switch_sound.tscn" id="4_fqubh"]
+[ext_resource type="PackedScene" uid="uid://dv4ex63y5roms" path="res://objects/sounds/power_up.tscn" id="5_rhv75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sq51"]
+size = Vector2(100, 140)
+
+[node name="CardSelectionWater" type="Node2D"]
+visible = false
+script = ExtResource("1_akldy")
+
+[node name="Card1" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Card1"]
+texture = ExtResource("1_qwli6")
+
+[node name="Area2D" type="Area2D" parent="Card1"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card1/Area2D"]
+shape = SubResource("RectangleShape2D_8sq51")
+
+[node name="Outline" type="Sprite2D" parent="Card1"]
+visible = false
+z_index = -1
+z_as_relative = false
+texture = ExtResource("3_lmgsb")
+
+[node name="Card2" type="Node2D" parent="."]
+position = Vector2(160, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Card2"]
+texture = ExtResource("1_qwli6")
+
+[node name="Area2D" type="Area2D" parent="Card2"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card2/Area2D"]
+shape = SubResource("RectangleShape2D_8sq51")
+
+[node name="Outline" type="Sprite2D" parent="Card2"]
+visible = false
+z_index = -1
+z_as_relative = false
+texture = ExtResource("3_lmgsb")
+
+[node name="Card3" type="Node2D" parent="."]
+position = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Card3"]
+texture = ExtResource("1_qwli6")
+
+[node name="Area2D" type="Area2D" parent="Card3"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card3/Area2D"]
+shape = SubResource("RectangleShape2D_8sq51")
+
+[node name="Outline" type="Sprite2D" parent="Card3"]
+visible = false
+z_index = -1
+z_as_relative = false
+texture = ExtResource("3_lmgsb")
+
+[node name="UiSwitchSound" parent="." instance=ExtResource("4_fqubh")]
+
+[node name="PowerUpSound" parent="." instance=ExtResource("5_rhv75")]
+
+[connection signal="body_entered" from="Card1/Area2D" to="." method="_card1_entered"]
+[connection signal="body_exited" from="Card1/Area2D" to="." method="_card_left"]
+[connection signal="body_entered" from="Card2/Area2D" to="." method="_card2_entered"]
+[connection signal="body_exited" from="Card2/Area2D" to="." method="_card_left"]
+[connection signal="body_entered" from="Card3/Area2D" to="." method="_card3_entered"]
+[connection signal="body_exited" from="Card3/Area2D" to="." method="_card_left"]

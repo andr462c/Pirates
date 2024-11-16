@@ -8,26 +8,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0smk"]
 size = Vector2(35.5107, 64.0082)
 
-[node name="Enemy" type="Node2D"]
-script = ExtResource("1_onowu")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="FishingBoat" type="RigidBody2D"]
 skew = 0.015959
 mass = 500.0
 linear_damp = 1.0
 angular_damp = 2.0
+script = ExtResource("1_onowu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.244633, 0)
 shape = SubResource("RectangleShape2D_q0smk")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_rqmib")
 
-[node name="Fisherman" parent="RigidBody2D/Sprite2D" instance=ExtResource("3_6n3r5")]
+[node name="Fisherman" parent="Sprite2D" instance=ExtResource("3_6n3r5")]
 position = Vector2(-11.2386, 4.55334)
 
-[node name="Fisherman2" parent="RigidBody2D/Sprite2D" instance=ExtResource("3_6n3r5")]
+[node name="Fisherman2" parent="Sprite2D" instance=ExtResource("3_6n3r5")]
 position = Vector2(11.111, 4.55334)
 
-[node name="EnemyMovement" parent="RigidBody2D" instance=ExtResource("4_lwue5")]
+[node name="EnemyMovement" parent="." instance=ExtResource("4_lwue5")]

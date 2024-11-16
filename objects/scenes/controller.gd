@@ -1,9 +1,13 @@
 extends Node2D
 
+@onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
 @export var level_enemies = [
 	[preload("res://objects/enemies/fishing_boat.tscn")],
+	[preload("res://objects/enemies/fishing_boat.tscn"), preload("res://objects/enemies/fishing_boat.tscn")],
 ]
+
+var won = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +31,7 @@ func _ready() -> void:
 func construct_enemies():
 	var enemies = level_enemies[level]
 	var enemy_node = $Enemies
+	var offset = Vector2(0, 0)
 	for enemy in enemies:
 		var instance: Node2D = enemy.instantiate()
 		instance.global_position = Vector2(300, 50)
@@ -34,4 +39,7 @@ func construct_enemies():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var enemies_node = $Enemies
+	if !won && enemies_node.get_child_count() == 0:
+		won = true
+		card_selection.show_cards()
