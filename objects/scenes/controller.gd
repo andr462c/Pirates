@@ -9,6 +9,10 @@ extends Node2D
 	[preload("res://objects/enemies/fishing_boat.tscn"), preload("res://objects/enemies/fishing_boat.tscn")],
 ]
 
+var cards = [
+	preload("res://objects/modifiers/movement_speed_increase.tscn")
+]
+
 var won = false
 
 # Called when the node enters the scene tree for the first time.
@@ -44,4 +48,11 @@ func _process(delta: float) -> void:
 	var enemies_node = $Enemies
 	if !won && enemies_node.get_child_count() == 0:
 		won = true
+		add_random_cards()
 		card_selection.show_cards()
+		
+func add_random_cards():
+	for child in card_selection.get_children():
+		var card = cards[0].instantiate()
+		card.name = "Modifier"
+		child.add_child(card)

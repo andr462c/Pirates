@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name PlayerBoat
+
 var speed = Vector2(0,0)
 var max_speed = 150
 @export var acceleration = 500000

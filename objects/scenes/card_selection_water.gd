@@ -1,7 +1,6 @@
 extends Node2D
 
 var item_index = -1
-var items = []
 
 @onready
 var power_up_sound = $PowerUpSound
@@ -9,6 +8,8 @@ var power_up_sound = $PowerUpSound
 var switch_sound = $UiSwitchSound
 @onready
 var outline = $Card1/Outline
+
+var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,6 +35,7 @@ func _card1_entered(body: Node2D) -> void:
 	$Card1/Outline.visible = true
 	$Card2/Outline.visible = false
 	$Card3/Outline.visible = false
+	player = body
 	
 
 func _card2_entered(body: Node2D) -> void:
@@ -43,6 +45,7 @@ func _card2_entered(body: Node2D) -> void:
 	$Card1/Outline.visible = false
 	$Card2/Outline.visible = true
 	$Card3/Outline.visible = false
+	player = body
 
 
 func _card3_entered(body: Node2D) -> void:
@@ -52,6 +55,7 @@ func _card3_entered(body: Node2D) -> void:
 	$Card1/Outline.visible = false
 	$Card2/Outline.visible = false
 	$Card3/Outline.visible = true
+	player = body
 
 
 func _card_left(bodt: Node2D) -> void:
@@ -59,7 +63,7 @@ func _card_left(bodt: Node2D) -> void:
 
 
 func confirm_selection():
-	if item_index == -1:
+	if item_index == -1 || visible == false:
 		return
 	
 	print("Selected: ", item_index)
@@ -68,6 +72,8 @@ func confirm_selection():
 	$Card1/Area2D.monitoring = false
 	$Card2/Area2D.monitoring = false
 	$Card3/Area2D.monitoring = false
+	
+	get_child(item_index).get_node("Modifier").modify_player(player)
 	
 	var controller = get_node("../Controller")
 	controller.level += 1
