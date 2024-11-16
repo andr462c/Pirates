@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8jys3ki7r73p"]
+
+[ext_resource type="AudioStream" uid="uid://ypoxl6bwo65p" path="res://assets/sound_files/UISwitch.wav" id="1_w43nb"]
+
+[node name="UiSwitchSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_w43nb")

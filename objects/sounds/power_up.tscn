@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv4ex63y5roms"]
+
+[ext_resource type="AudioStream" uid="uid://ltralvdj5vdk" path="res://assets/sound_files/powerUp.wav" id="1_3ukaj"]
+
+[node name="PowerUpSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_3ukaj")

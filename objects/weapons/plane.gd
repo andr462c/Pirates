@@ -10,6 +10,8 @@ var target
 var marker
 var bomb_dropped = false
 
+var bomb_sound = preload("res://objects/sounds/bomb_sound.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -33,6 +35,7 @@ func drop_bomb():
 	var explosion = explosion_scene.instantiate()
 	explosion.position = target
 	explosion.scale *= 2
+	explosion.add_child(bomb_sound.instantiate())
 	get_tree().root.call_deferred("add_child", explosion)
 	marker.queue_free()
 

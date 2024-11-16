@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wu57q1jxo5cu"]
+
+[ext_resource type="AudioStream" uid="uid://ciqw8lbwfbct5" path="res://assets/sound_files/PlayerDead.wav" id="1_gevlc"]
+
+[node name="PlayerDie" type="AudioStreamPlayer"]
+stream = ExtResource("1_gevlc")
+autoplay = true

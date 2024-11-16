@@ -8,6 +8,7 @@ var kill_timer: float
 var bullet_pattern: BulletPattern
 
 var explosion_scene = preload("res://objects/bullets/explosion.tscn")
+var missile_explosion_sound = preload("res://objects/sounds/missile_explode_sound.tscn")
 
 func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_with: Array, _damage: float, _kill_timer: float, _bullet_pattern: BulletPattern):
 	position = _position
@@ -28,6 +29,7 @@ func _on_body_entered(body):
 	# body.apply_impulse(direction*400, global_position)
 	var explosion = explosion_scene.instantiate()
 	explosion.position = position
+	explosion.add_child(missile_explosion_sound.instantiate())
 	get_tree().root.call_deferred("add_child", explosion)
 	queue_free()
 

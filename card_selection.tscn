@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv2crx0t0bsal"]
+[gd_scene load_steps=7 format=3 uid="uid://bv2crx0t0bsal"]
 
 [ext_resource type="Script" path="res://card_selection.gd" id="1_t1ga2"]
 [ext_resource type="Script" path="res://card_1.gd" id="2_20lnu"]
+[ext_resource type="Texture2D" uid="uid://dl5v5ndehpi6l" path="res://assets/cards/CardTestShip.png" id="2_oxbjn"]
+[ext_resource type="PackedScene" uid="uid://dv4ex63y5roms" path="res://objects/sounds/power_up.tscn" id="4_1f1lx"]
+[ext_resource type="PackedScene" uid="uid://b8jys3ki7r73p" path="res://objects/sounds/ui_switch_sound.tscn" id="5_1vjb7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ef63j"]
+bg_color = Color(7.02709e-06, 0.695847, 0.616591, 1)
 
 [node name="CardSelection" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -40,6 +47,9 @@ theme_override_constants/separation = 50
 [node name="Card1" type="Button" parent="CardContainer"]
 custom_minimum_size = Vector2(100, 140)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_ef63j")
+icon = ExtResource("2_oxbjn")
+flat = true
 script = ExtResource("2_20lnu")
 
 [node name="Card2" type="Button" parent="CardContainer"]
@@ -50,6 +60,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 140)
 layout_mode = 2
 
+[node name="PowerUpSound" parent="." instance=ExtResource("4_1f1lx")]
+
+[node name="UiSwitchSound" parent="." instance=ExtResource("5_1vjb7")]
+
+[connection signal="focus_entered" from="CardContainer/Card1" to="." method="_on_card_focus_entered"]
 [connection signal="pressed" from="CardContainer/Card1" to="." method="_on_card_1_pressed"]
+[connection signal="focus_entered" from="CardContainer/Card2" to="." method="_on_card_focus_entered"]
 [connection signal="pressed" from="CardContainer/Card2" to="." method="_on_card_2_pressed"]
-[connection signal="pressed" from="CardContainer/Card3" to="." method="_on_card_2_pressed"]
+[connection signal="focus_entered" from="CardContainer/Card3" to="." method="_on_card_focus_entered"]
+[connection signal="pressed" from="CardContainer/Card3" to="." method="_on_card_3_pressed"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://e1kyagy266la"]
+
+[ext_resource type="AudioStream" uid="uid://bq0rdd0lwmgsp" path="res://assets/sound_files/explosion.wav" id="1_02lql"]
+
+[node name="MissileExplodeSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_02lql")
+autoplay = true

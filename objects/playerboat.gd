@@ -20,6 +20,13 @@ var jumptimer: Timer
 
 var id = 0
 
+@onready
+var hit_sound = $HitSound
+@onready
+var jump_sound = $JumpSound
+
+var death_sound = preload("res://objects/sounds/player_die.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
@@ -67,6 +74,7 @@ func _physics_process(delta):
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
 	if Input.is_action_pressed("key_jump") and not jumping and jumptimer.is_stopped():
+		jump_sound.play()
 		jumping = true
 		z_speed = 0.1
 		set_collision_layer_value(1,false)
@@ -94,7 +102,10 @@ func shoot():
 
 func take_damage(damage: float):
 	health -= damage
+	if !hit_sound.playing:
+		hit_sound.play()
 	print("health: ", health)
 	if health <= 0:
+		get_tree().root.add_child(death_sound.instantiate())
 		queue_free()
 	

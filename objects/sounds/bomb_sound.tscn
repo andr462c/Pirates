@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1yg2yqxkrl4e"]
+
+[ext_resource type="AudioStream" uid="uid://bn5yip4x4r0kt" path="res://assets/sound_files/BOMB.wav" id="1_cnrl8"]
+
+[node name="BombSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_cnrl8")
