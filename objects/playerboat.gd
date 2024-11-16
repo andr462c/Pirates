@@ -7,7 +7,8 @@ var direction = 0
 var target_direction = Vector2(0,0)
 var brake_factor = 2.0
 var sprite: Sprite2D
-var shoot_direction: Vector2
+var shoot_direction = Vector2(0, 0)
+var target_shoot_direction: Vector2
 var bullet_speed_multiplier = 1.0
 
 var weapons = []
@@ -25,12 +26,14 @@ func _physics_process(delta):
 	# Update pos
 	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if target_direction.length() > 0.1:
-		shoot_direction = target_direction.normalized()	
 		direction = target_direction
 		set_constant_force(direction*acceleration)
 	else:
 		set_constant_force(Vector2(0,0))
-
+	
+	target_shoot_direction = Input.get_vector("key_shoot_left", "key_shoot_right", "key_shoot_up", "key_shoot_down")
+	if target_shoot_direction.length() > 0.1:
+		shoot_direction = target_shoot_direction.normalized()
 
 
 	if linear_velocity.length() > 0.1:  # Avoid rotating if the object is nearly stationary
