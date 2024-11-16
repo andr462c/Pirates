@@ -5,7 +5,7 @@ var shoot_direction: Vector2 = Vector2(1,0)
 var reload_timer: Timer
 var can_shoot = true
 @export var damage = 20
-@export var kill_time = 0.5
+@export var kill_time = 5
 @export var shooting_timeout = 1
 @export var pattern = preload("res://objects/bullets/bullet_patterns/pattern.tscn")
 
@@ -30,9 +30,9 @@ func shoot():
 		return
 	can_shoot=false
 	var bullet = bullet_scene.instantiate()
-	bullet.init(global_position, speed, shoot_direction, Utils.get_parents(self), damage, kill_time, pattern)
+	bullet.init(global_position, speed, shoot_direction, Utils.get_parents(self), damage, kill_time, pattern.instantiate())
 	get_tree().root.add_child(bullet)
-	reload_timer.start()	
+	reload_timer.start(shooting_timeout)	
 
 func _on_reload_timeout():
 	can_shoot = true
