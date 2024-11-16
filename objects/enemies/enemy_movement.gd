@@ -16,5 +16,5 @@ func apply_movement(delta: float, rigid_body: RigidBody2D) -> void:
 	angle_diff = wrap(angle_diff, -PI, PI)
 	rigid_body.angular_velocity = angle_diff / delta * 0.02
 	rigid_body.apply_force(Vector2.from_angle(rigid_body.rotation - PI/2) * speed)
-	if (global_position - p).length() < 10:
+	if (global_position - p).length() < 60:
 		cur_idx = (cur_idx + 1) % len(points)

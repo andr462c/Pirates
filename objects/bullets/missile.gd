@@ -7,12 +7,14 @@ var sprite: Sprite2D
 
 var explosion_scene = preload("res://objects/bullets/explosion.tscn")
 
-func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_with: Node2D):
+func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_with: Array):
 	position = _position
 	speed =	 _speed	
 	direction = _direction
 	sprite = $Sprite2D
-	add_collision_exception_with(dont_collide_with)
+	for node in dont_collide_with:
+		if node is PhysicsBody2D:
+			add_collision_exception_with(node)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

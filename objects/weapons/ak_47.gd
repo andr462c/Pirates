@@ -19,14 +19,23 @@ func _process(delta):
 func update_stats(playerboat):
 	shoot_direction = playerboat.shoot_direction
 	speed = speed*playerboat.bullet_speed_multiplier
-	
+
+func get_parents() -> Array:
+	var res = [get_parent()]
+	while true:
+		var p = res[-1].get_parent()
+		print(res[-1], " ", p)
+		if p == null:
+			break
+		res.append(p)
+	return res
 
 func shoot():
 	if not can_shoot:
 		return
 	can_shoot=false
 	var bullet = bullet_scene.instantiate()
-	bullet.init(global_position, speed, shoot_direction, get_parent())
+	bullet.init(global_position, speed, shoot_direction, get_parents())
 	get_tree().root.add_child(bullet)
 	reload_timer.start()	
 

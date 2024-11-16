@@ -26,7 +26,7 @@ func shoot():
 		return
 	can_shoot=false
 	var bullet = bullet_scene.instantiate()
-	bullet.init(global_position, speed, shoot_direction, get_parent())
+	bullet.init(global_position, speed, shoot_direction, [get_parent()])
 	get_tree().root.add_child(bullet)
 	reload_timer.start()	
 
