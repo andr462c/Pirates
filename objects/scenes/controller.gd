@@ -3,9 +3,8 @@ extends Node2D
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
 @export var level_enemies = [
-	[preload("res://objects/enemies/fishing_boat.tscn")],
-	[preload("res://objects/enemies/fishing_boat.tscn")],
 	[preload("res://objects/enemies/naersk.tscn")],
+	[preload("res://objects/enemies/fishing_boat.tscn")],
 	[preload("res://objects/enemies/navy_ship.tscn")],
 	[preload("res://objects/enemies/fishing_boat.tscn"), preload("res://objects/enemies/fishing_boat.tscn")],
 ]

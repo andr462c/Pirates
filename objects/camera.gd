@@ -26,8 +26,9 @@ func _process(delta: float) -> void:
 	var zoomfactor = 1
 	var bbwidth = bb[1].x - bb[0].x
 	var bbheight= bb[1].y - bb[0].y
-	zoomfactor = max(zoomfactor, bbwidth / screen_width * 1.1)
-	zoomfactor = max(zoomfactor, bbheight / screen_height * 1.1)
+	var buffer = 1.3
+	zoomfactor = max(zoomfactor, bbwidth / screen_width * buffer)
+	zoomfactor = max(zoomfactor, bbheight / screen_height * buffer)
 	zoomfactor = min(zoomfactor, 2)
 	zoom = Vector2(1/zoomfactor, 1/zoomfactor)
 	

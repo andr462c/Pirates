@@ -4,6 +4,12 @@ extends Node2D
 var shoot_direction = Vector2(0, 0)
 var bullet_speed_multiplier = 1.0
 var weapons = []
+@onready
+var sprite = $Sprite2D
+@onready
+var sprite_modulator = $SpriteModulator
+@export
+var health = 1000
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,3 +33,10 @@ func _process(delta: float) -> void:
 	for weapon in weapons:
 		weapon.update_stats(self)
 		weapon.shoot()
+
+
+func take_damage(damage: float):
+	health -= damage
+	sprite_modulator.modulate(sprite)
+	if health <= 0:
+		queue_free()

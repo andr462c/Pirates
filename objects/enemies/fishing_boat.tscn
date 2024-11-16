@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2ci8t6m6d6ne"]
+[gd_scene load_steps=7 format=3 uid="uid://c2ci8t6m6d6ne"]
 
 [ext_resource type="Script" path="res://objects/fishing_boat.gd" id="1_onowu"]
 [ext_resource type="Texture2D" uid="uid://lipm85klv0ns" path="res://assets/boat/fishboat.png" id="2_rqmib"]
 [ext_resource type="PackedScene" uid="uid://doqs7cw0jqufe" path="res://objects/people/fisherman.tscn" id="3_6n3r5"]
 [ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="4_lwue5"]
+[ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="5_ssbst"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0smk"]
 size = Vector2(35.5107, 64.0082)
@@ -29,3 +30,5 @@ position = Vector2(-11.2386, 4.55334)
 position = Vector2(11.111, 4.55334)
 
 [node name="EnemyMovement" parent="." instance=ExtResource("4_lwue5")]
+
+[node name="SpriteModulator" parent="." instance=ExtResource("5_ssbst")]

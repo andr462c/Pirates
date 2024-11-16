@@ -3,6 +3,8 @@ extends Node2D
 var bomb_strength = 2000
 var damage_radius
 var knockback_radius
+@export
+var damage = 25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,3 +28,6 @@ func _on_knockback_area_body_entered(body: Node2D) -> void:
 		var impulse = inv_distance * to_boat.normalized()
 		
 		physics_body.apply_impulse(impulse * bomb_strength)
+		if body.has_method("take_damage"):
+			var factor = min(1, 25 / (to_boat.length() + 0.1))
+			body.take_damage(damage * factor)

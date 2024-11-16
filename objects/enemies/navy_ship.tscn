@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgmmp0lw7m84j"]
+[gd_scene load_steps=6 format=3 uid="uid://bgmmp0lw7m84j"]
 
 [ext_resource type="Script" path="res://objects/enemies/navy_ship.gd" id="1_x1i2n"]
 [ext_resource type="Texture2D" uid="uid://d06c65sb06ytr" path="res://assets/boat/navyship.png" id="2_2hvq8"]
 [ext_resource type="PackedScene" uid="uid://c33ytwvk1wybr" path="res://objects/weapons/Turret.tscn" id="3_xrs7y"]
+[ext_resource type="PackedScene" uid="uid://bly38omb7mkvm" path="res://objects/sprite_modulator.tscn" id="4_0fgxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kl4f"]
 size = Vector2(52, 252)
@@ -30,3 +31,5 @@ position = Vector2(24, 0)
 
 [node name="Turret3" parent="Weapons" instance=ExtResource("3_xrs7y")]
 position = Vector2(-51, 25)
+
+[node name="SpriteModulator" parent="." instance=ExtResource("4_0fgxv")]
