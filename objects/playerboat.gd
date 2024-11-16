@@ -96,10 +96,10 @@ func _physics_process(delta):
 			jumptimer.start(0.3)
 		scale = Vector2(1+z*2,1+z*2)
 
-	if should_shoot:
+	if should_shoot and not jumping and jumptimer.is_stopped():
 		shoot()
 
-#
+
 func shoot():
 	for weapon in weapons:
 		weapon.update_stats(self)
