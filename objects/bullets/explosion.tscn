@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dufodp5m4b1wv"]
+[gd_scene load_steps=14 format=3 uid="uid://ctcar62hiaguw"]
 
 [ext_resource type="Texture2D" uid="uid://bdyphh53q3b5m" path="res://assets/explosion_sheet.png" id="1_6j6en"]
 [ext_resource type="Script" path="res://objects/bullets/explosion.gd" id="1_isupt"]
