@@ -109,7 +109,7 @@ func take_damage(damage: float):
 	health -= damage
 	if !hit_sound.playing:
 		hit_sound.play()
-	print("health: ", health)
+	print("health: ", health, ", ", damage)
 	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		get_tree().root.add_child(death_sound.instantiate())
