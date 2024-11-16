@@ -4,6 +4,7 @@ extends Node2D
 @export var level_enemies = [
 	[preload("res://objects/enemies/navy_ship.tscn")],
 	[preload("res://objects/enemies/fishing_boat.tscn")],
+	[preload("res://objects/enemies/naersk.tscn")],
 ]
 
 # Called when the node enters the scene tree for the first time.

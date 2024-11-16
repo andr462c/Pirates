@@ -19,3 +19,7 @@ func _process(delta):
 	weapon.shoot()
 	
 	
+
+
+func _on_containertimer_timeout():
+	pass # Replace with function body.

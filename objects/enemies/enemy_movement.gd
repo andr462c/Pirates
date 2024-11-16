@@ -19,9 +19,11 @@ func _process(delta):
 	var direction: Vector2 = (p - parent.global_position).normalized()
 	var angle_diff = atan2(direction.x, -direction.y) - parent.rotation
 	angle_diff = wrap(angle_diff, -PI, PI)
-	parent.angular_velocity = angle_diff / delta * 0.02
+	parent.angular_velocity = angle_diff / delta * angular_factor
 	parent.apply_force(Vector2.from_angle(parent.rotation - PI/2) * speed)
+	
 	if (global_position - p).length() < 60:
+		$Timer.start(50)
 		cur_idx = (cur_idx + 1) % len(points)
 
 #func apply_movement(delta: float, rigid_body: RigidBody2D) -> void:
@@ -37,3 +39,8 @@ func _process(delta):
 	#rigid_body.apply_force(Vector2.from_angle(rigid_body.rotation - PI/2) * speed)
 	#if (global_position - p).length() < 60:
 		#cur_idx = (cur_idx + 1) % len(points)
+
+
+func _on_timer_timeout():
+	print("called")
+	cur_idx = (cur_idx + 1) % len(points)

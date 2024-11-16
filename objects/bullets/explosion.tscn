@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctcar62hiaguw"]
+[gd_scene load_steps=14 format=3 uid="uid://dufodp5m4b1wv"]
 
 [ext_resource type="Texture2D" uid="uid://bdyphh53q3b5m" path="res://assets/explosion_sheet.png" id="1_6j6en"]
 [ext_resource type="Script" path="res://objects/bullets/explosion.gd" id="1_isupt"]
@@ -74,6 +74,7 @@ script = ExtResource("1_isupt")
 sprite_frames = SubResource("SpriteFrames_atpxa")
 frame = 6
 frame_progress = 1.0
+speed_scale = 2.0
 script = ExtResource("2_a40x6")
 
 [node name="DamageArea" type="Area2D" parent="."]
