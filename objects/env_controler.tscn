@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://uwpeen6i7ycy"]
+
+[ext_resource type="Script" path="res://objects/env_controler.gd" id="1_fyft7"]
+
+[node name="EnvControler" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_fyft7")

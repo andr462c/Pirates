@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://bjpnmmnr0x28n" path="res://assets/boat/container.png" id="1_r6guj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5x36"]
-size = Vector2(24, 48)
+size = Vector2(16, 48)
 
 [node name="Container" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 mass = 800.0
-gravity_scale = 0.0
+gravity_scale = 0.5
 linear_damp = 2.0
 angular_damp = 2.0
 

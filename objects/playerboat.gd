@@ -2,23 +2,28 @@ extends RigidBody2D
 
 var speed = Vector2(0,0)
 var max_speed = 150
-@export var acceleration = 50
-var direction = 0
+@export var acceleration = 500000
+var direction = Vector2(1,0)
 var target_direction = Vector2(0,0)
 var brake_factor = 2.0
 var sprite: Sprite2D
 var shoot_direction = Vector2(0, 0)
 var target_shoot_direction: Vector2
 var bullet_speed_multiplier = 1.0
-
+var jumping = false
+var z = 0.0
+var z_speed = 0
+var colshape: CollisionShape2D
 var weapons = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
+	colshape = $CollisionShape2D
+	gravity_scale = 0
 	#weapons.append($Ak47)
 	#weapons.append($Shotgun)
-	weapons.append($Rpg)
+	#	weapons.append($Rpg)
 
 func _integrate_forces(state):
 	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -56,6 +61,19 @@ func _physics_process(delta):
 	# if speed.length() > max_speed:
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
+	if Input.is_action_just_pressed("key_jump") and not jumping:
+		jumping = true
+		z_speed = 0.1
+		colshape.disabled = true
+		
+	if jumping:
+		z += z_speed
+		z_speed -= delta*0.5
+		if z < 0:
+			z = 0
+			jumping = false
+			colshape.disabled = false
+		sprite.scale = Vector2(1+z,1+z)
 
 	if Input.is_action_pressed("key_shoot"):
 		shoot()

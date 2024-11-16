@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://doqs7cw0jqufe"]
+
+[ext_resource type="Script" path="res://objects/people/fisherman.gd" id="1_37sj3"]
+[ext_resource type="Texture2D" uid="uid://cineisdtsbkts" path="res://assets/people/somali.png" id="1_xtraq"]
+[ext_resource type="Texture2D" uid="uid://dmr0ba6bf82gc" path="res://assets/people/shotgun.png" id="2_rqcjp"]
+[ext_resource type="PackedScene" uid="uid://c75bvt1bu8dpu" path="res://objects/weapons/ak47.tscn" id="4_as4lb"]
+
+[node name="Fisherman" type="Node2D"]
+script = ExtResource("1_37sj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xtraq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, -6)
+texture = ExtResource("2_rqcjp")
+
+[node name="Ak47" parent="." instance=ExtResource("4_as4lb")]
