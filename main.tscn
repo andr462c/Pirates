@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsywxmlmwcdq5"]
+
+[ext_resource type="PackedScene" uid="uid://b7y3wycwnie7d" path="res://objects/playerboat.tscn" id="1_mah4u"]
+[ext_resource type="PackedScene" uid="uid://qkj8cirhlbuu" path="res://objects/obstacles/container.tscn" id="2_yniep"]
+
+[sub_resource type="GDScript" id="GDScript_qmkjq"]
+script/source = "extends Node2D
+
+var airstrike_scene = preload(\"res://objects/weapons/airstrike.tscn\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	var airstrike = airstrike_scene.instantiate()
+	get_tree().root.add_child(airstrike)
+"
+
+[node name="Main" type="Node2D"]
+
+[node name="Playerboat" parent="." instance=ExtResource("1_mah4u")]
+position = Vector2(125, 88)
+
+[node name="Container" parent="." instance=ExtResource("2_yniep")]
+position = Vector2(294, 150)
+
+[node name="Airstrikespawner" type="Node2D" parent="."]
+script = SubResource("GDScript_qmkjq")
+
+[node name="Timer" type="Timer" parent="Airstrikespawner"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Airstrikespawner/Timer" to="Airstrikespawner" method="_on_timer_timeout"]

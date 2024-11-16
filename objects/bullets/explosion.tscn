@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctcar62hiaguw"]
+[gd_scene load_steps=14 format=3 uid="uid://ctcar62hiaguw"]
 
 [ext_resource type="Texture2D" uid="uid://bdyphh53q3b5m" path="res://assets/explosion_sheet.png" id="1_6j6en"]
+[ext_resource type="Script" path="res://objects/bullets/explosion.gd" id="1_isupt"]
 [ext_resource type="Script" path="res://objects/bullets/explosion_animation.gd" id="2_a40x6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epllk"]
@@ -60,7 +61,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Explosion" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5k6p"]
+radius = 26.0768
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ogv1"]
+radius = 59.0
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_isupt")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_atpxa")
@@ -68,7 +76,17 @@ frame = 6
 frame_progress = 1.0
 script = ExtResource("2_a40x6")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-10, -18, -16, -13, -18, 6, -13, 16, 8, 17, 17, 11, 19, -3, 13, -17, 6, -18)
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_d5k6p")
+
+[node name="KnockbackArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackArea"]
+shape = SubResource("CircleShape2D_0ogv1")
 
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
+[connection signal="body_entered" from="KnockbackArea" to="." method="_on_knockback_area_body_entered"]

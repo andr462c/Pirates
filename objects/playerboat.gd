@@ -16,6 +16,8 @@ var z_speed = 0
 var colshape: CollisionShape2D
 var weapons = []
 
+var id = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
@@ -26,19 +28,19 @@ func _ready():
 	#	weapons.append($Rpg)
 
 func _integrate_forces(state):
-	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	target_direction = Input.get_vector("key_left_%d" % id, "key_right_%d" % id, "key_up_%d" % id, "key_down_%d" % id)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Update pos
-	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	target_direction = Input.get_vector("key_left_%d" % id, "key_right_%d" % id, "key_up_%d" % id, "key_down_%d" % id)
 	if target_direction.length() > 0.1:
 		direction = target_direction
 		set_constant_force(direction*acceleration)
 	else:
 		set_constant_force(Vector2(0,0))
 	
-	target_shoot_direction = Input.get_vector("key_shoot_left", "key_shoot_right", "key_shoot_up", "key_shoot_down")
+	target_shoot_direction = Input.get_vector("key_shoot_left_%d" % id, "key_shoot_right_%d" % id, "key_shoot_up_%d" % id, "key_shoot_down_%d" % id)
 	if target_shoot_direction.length() > 0.1:
 		shoot_direction = target_shoot_direction.normalized()
 

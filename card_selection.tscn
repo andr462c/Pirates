@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv2crx0t0bsal"]
+
+[ext_resource type="Script" path="res://card_selection.gd" id="1_t1ga2"]
+[ext_resource type="Script" path="res://card_1.gd" id="2_20lnu"]
+
+[node name="CardSelection" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t1ga2")
+
+[node name="TransparentBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0.360784)
+
+[node name="CardContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -50.0
+offset_right = 62.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Card1" type="Button" parent="CardContainer"]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 2
+script = ExtResource("2_20lnu")
+
+[node name="Card2" type="Button" parent="CardContainer"]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 2
+
+[node name="Card3" type="Button" parent="CardContainer"]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 2
+
+[connection signal="pressed" from="CardContainer/Card1" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="CardContainer/Card2" to="." method="_on_card_2_pressed"]
+[connection signal="pressed" from="CardContainer/Card3" to="." method="_on_card_2_pressed"]

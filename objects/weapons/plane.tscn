@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2io8pv7s4t4u"]
 
-[ext_resource type="Texture2D" uid="uid://cmamwrahhoykx" path="res://icon.svg" id="1_spv7c"]
+[ext_resource type="Texture2D" uid="uid://djjox1vk82rqc" path="res://assets/flying/b2.png" id="1_sat36"]
 [ext_resource type="Script" path="res://objects/weapons/plane.gd" id="2_rd0dd"]
 
 [node name="Plane" type="Sprite2D"]
-texture = ExtResource("1_spv7c")
+texture = ExtResource("1_sat36")
 script = ExtResource("2_rd0dd")
 
 [node name="Timer" type="Timer" parent="."]

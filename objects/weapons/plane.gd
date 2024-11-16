@@ -32,6 +32,7 @@ func drop_bomb():
 	bomb_dropped = true
 	var explosion = explosion_scene.instantiate()
 	explosion.position = target
+	explosion.scale *= 2
 	get_tree().root.call_deferred("add_child", explosion)
 	marker.queue_free()
 
@@ -44,13 +45,16 @@ func init(marker: Node2D):
 	var rand = randi_range(1, 4)
 	if rand == 1:
 		position = Vector2(1000, target.y)
+		rotate(-PI/2)
 		move_delta = Vector2(-1, 0)
 	elif rand == 2:
 		position = Vector2(-1000, target.y)
+		rotate(PI/2)
 		move_delta = Vector2(1, 0)
 	elif rand == 3:
 		position = Vector2(target.x, 1000)
 		move_delta = Vector2(0, -1)
 	else:
 		position = Vector2(target.x, -1000)
+		rotate(PI)
 		move_delta = Vector2(0, 1)

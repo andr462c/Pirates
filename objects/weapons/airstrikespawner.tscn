@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0hv4kgjloc1c"]
+
+[ext_resource type="Script" path="res://objects/weapons/airstrikespawner.gd" id="1_crgbr"]
+
+[node name="Airstrikespawner" type="Timer"]
+wait_time = 5.0
+autostart = true
+script = ExtResource("1_crgbr")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

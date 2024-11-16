@@ -23,7 +23,6 @@ func _ready() -> void:
 	var noise = Vector2(randf_range(-50, 50), randf_range(-50, 50))
 	marker.position = player_position + noise
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if marker != null:
