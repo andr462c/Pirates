@@ -15,13 +15,14 @@ var z = 0.0
 var z_speed = 0
 var colshape: CollisionShape2D
 var weapons = []
+@export var health = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
 	colshape = $CollisionShape2D
 	gravity_scale = 0
-	#weapons.append($Ak47)
+	weapons.append($Ak47)
 	#weapons.append($Shotgun)
 	#	weapons.append($Rpg)
 
@@ -41,6 +42,7 @@ func _physics_process(delta):
 	target_shoot_direction = Input.get_vector("key_shoot_left", "key_shoot_right", "key_shoot_up", "key_shoot_down")
 	if target_shoot_direction.length() > 0.1:
 		shoot_direction = target_shoot_direction.normalized()
+	var should_shoot = target_shoot_direction.length() > 0
 
 
 	if linear_velocity.length() > 0.1:  # Avoid rotating if the object is nearly stationary
@@ -75,11 +77,18 @@ func _physics_process(delta):
 			colshape.disabled = false
 		sprite.scale = Vector2(1+z,1+z)
 
-	if Input.is_action_pressed("key_shoot"):
+	if should_shoot:
 		shoot()
 
-
+#
 func shoot():
 	for weapon in weapons:
 		weapon.update_stats(self)
 		weapon.shoot()	
+
+func take_damage(damage: float):
+	health -= damage
+	print("health: ", health)
+	if health <= 0:
+		queue_free()
+	

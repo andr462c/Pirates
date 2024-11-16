@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var enemy_movement = $RigidBody2D/EnemyMovement
 @onready var rigid_body = $RigidBody2D
+@export var health = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +13,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	enemy_movement.apply_movement(delta, rigid_body)
+
+
+func take_damage(damage: float):
+	health -= damage
+	if health <= 0:
+		queue_free()
+	
