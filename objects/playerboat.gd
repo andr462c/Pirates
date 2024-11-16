@@ -17,7 +17,8 @@ var weapons = []
 func _ready():
 	sprite = $Sprite2D
 	#weapons.append($Ak47)
-	weapons.append($Shotgun)
+	#weapons.append($Shotgun)
+	weapons.append($Rpg)
 
 func _integrate_forces(state):
 	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

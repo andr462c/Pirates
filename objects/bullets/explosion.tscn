@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctcar62hiaguw"]
+
+[ext_resource type="Texture2D" uid="uid://bdyphh53q3b5m" path="res://assets/explosion_sheet.png" id="1_6j6en"]
+[ext_resource type="Script" path="res://objects/bullets/explosion_animation.gd" id="2_a40x6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epllk"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gia4q"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id2g0"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx3au"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs7a1"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qatio"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ynj"]
+atlas = ExtResource("1_6j6en")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_atpxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epllk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gia4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id2g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx3au")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs7a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qatio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3ynj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Explosion" type="Area2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_atpxa")
+frame = 6
+frame_progress = 1.0
+script = ExtResource("2_a40x6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-10, -18, -16, -13, -18, 6, -13, 16, 8, 17, 17, 11, 19, -3, 13, -17, 6, -18)
+
+[connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
