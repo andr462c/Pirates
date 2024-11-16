@@ -20,6 +20,7 @@ position = Vector2(0, 66)
 
 [node name="Shotgun" parent="spinshooter" instance=ExtResource("3_mtay0")]
 speed = 1000
+number_of_bullets = 10
 fan_spread = 3.0
 kill_time = 100.0
 shooting_timeout = 2
@@ -31,6 +32,7 @@ position = Vector2(0, 66)
 [node name="Shotgun" parent="spinshooter2" instance=ExtResource("3_mtay0")]
 position = Vector2(-1, 0)
 speed = 1000
+number_of_bullets = 10
 fan_spread = 6.283
 kill_time = 100.0
 shooting_timeout = 3

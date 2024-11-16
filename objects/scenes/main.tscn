@@ -13,4 +13,4 @@ position = Vector2(2, 0)
 
 [node name="Controller" type="Node2D" parent="."]
 script = ExtResource("3_ypdg7")
-level = 1
+level = 2

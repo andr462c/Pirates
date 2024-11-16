@@ -16,3 +16,5 @@ position = Vector2(0, -6)
 texture = ExtResource("2_rqcjp")
 
 [node name="Ak47" parent="." instance=ExtResource("4_as4lb")]
+speed = 2000
+kill_time = 1000.0

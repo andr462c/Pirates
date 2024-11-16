@@ -6,7 +6,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3xov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxr8f"]
-radius = 1.0
+radius = 5.0
 
 [node name="NormalBullet" type="RigidBody2D"]
 collision_layer = 2

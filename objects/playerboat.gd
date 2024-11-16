@@ -81,7 +81,7 @@ func _physics_process(delta):
 			set_collision_layer_value(1, true)
 			set_collision_mask_value(1, true)
 			jumptimer.start(0.3)
-		sprite.scale = Vector2(1+z*2,1+z*2)
+		scale = Vector2(1+z*2,1+z*2)
 
 	if should_shoot:
 		shoot()

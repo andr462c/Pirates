@@ -24,6 +24,7 @@ func _process(delta):
 func update_stats(playerboat):
 	shoot_direction = playerboat.shoot_direction
 	speed = speed*playerboat.bullet_speed_multiplier
+	global_rotation = shoot_direction.angle()
 
 
 func shoot():
