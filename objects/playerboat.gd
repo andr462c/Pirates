@@ -78,6 +78,8 @@ func _physics_process(delta):
 	# if speed.length() > max_speed:
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
+	if Input.is_action_just_pressed("ui_accept"):
+		preload("res://objects/modifiers/turret_upgrade.tscn").instantiate().modify_player(self)
 	if Input.is_action_pressed("key_jump") and not jumping and jumptimer.is_stopped():
 		jump_sound.play()
 		jumping = true
@@ -101,6 +103,7 @@ func _physics_process(delta):
 
 
 func shoot():
+	weapons = Utils.GetWeapons(self)
 	for weapon in weapons:
 		weapon.update_stats(self)
 		weapon.shoot()	
