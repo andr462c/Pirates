@@ -74,6 +74,8 @@ func confirm_selection():
 	$Card3/Area2D.monitoring = false
 	
 	get_child(item_index).get_node("Modifier").modify_player(player)
+	for child in get_children():
+		get_node("Modifier").queue_free()
 	
 	var controller = get_node("../Controller")
 	controller.level += 1
