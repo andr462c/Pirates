@@ -141,7 +141,9 @@ key_down_1={
 
 [layer_names]
 
+2d_physics/layer_1="water"
 2d_physics/layer_2="bulletlayer"
+2d_physics/layer_3="overwater"
 
 [physics]
 

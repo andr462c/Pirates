@@ -15,25 +15,27 @@ var z = 0.0
 var z_speed = 0
 var colshape: CollisionShape2D
 var weapons = []
+@export var health = 100
+var jumptimer: Timer
 
 var id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
-	colshape = $CollisionShape2D
+	jumptimer = $Jumptimer
 	gravity_scale = 0
-	#weapons.append($Ak47)
-	#weapons.append($Shotgun)
-	#	weapons.append($Rpg)
+	weapons = Utils.GetWeapons(self)
 
 func _integrate_forces(state):
-	target_direction = Input.get_vector("key_left_%d" % id, "key_right_%d" % id, "key_up_%d" % id, "key_down_%d" % id)
+	pass
+	#target_direction = Input.get_vector("key_left_%d" % id, "key_right_%d" % id, "key_up_%d" % id, "key_down_%d" % id)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Update pos
-	target_direction = Input.get_vector("key_left_%d" % id, "key_right_%d" % id, "key_up_%d" % id, "key_down_%d" % id)
+	if not jumping:
+		target_direction = Input.get_vector("key_left_%d" % id, "key_right_%d" % id, "key_up_%d" % id, "key_down_%d" % id)
 	if target_direction.length() > 0.1:
 		direction = target_direction
 		set_constant_force(direction*acceleration)
@@ -43,6 +45,7 @@ func _physics_process(delta):
 	target_shoot_direction = Input.get_vector("key_shoot_left_%d" % id, "key_shoot_right_%d" % id, "key_shoot_up_%d" % id, "key_shoot_down_%d" % id)
 	if target_shoot_direction.length() > 0.1:
 		shoot_direction = target_shoot_direction.normalized()
+	var should_shoot = target_shoot_direction.length() > 0
 
 
 	if linear_velocity.length() > 0.1:  # Avoid rotating if the object is nearly stationary
@@ -63,10 +66,11 @@ func _physics_process(delta):
 	# if speed.length() > max_speed:
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
-	if Input.is_action_just_pressed("key_jump") and not jumping:
+	if Input.is_action_pressed("key_jump") and not jumping and jumptimer.is_stopped():
 		jumping = true
 		z_speed = 0.1
-		colshape.disabled = true
+		set_collision_layer_value(1,false)
+		set_collision_mask_value(1,false)
 		
 	if jumping:
 		z += z_speed
@@ -74,14 +78,23 @@ func _physics_process(delta):
 		if z < 0:
 			z = 0
 			jumping = false
-			colshape.disabled = false
-		sprite.scale = Vector2(1+z,1+z)
+			set_collision_layer_value(1, true)
+			set_collision_mask_value(1, true)
+			jumptimer.start(0.3)
+		sprite.scale = Vector2(1+z*2,1+z*2)
 
-	if Input.is_action_pressed("key_shoot"):
+	if should_shoot:
 		shoot()
 
-
+#
 func shoot():
 	for weapon in weapons:
 		weapon.update_stats(self)
 		weapon.shoot()	
+
+func take_damage(damage: float):
+	health -= damage
+	print("health: ", health)
+	if health <= 0:
+		queue_free()
+	

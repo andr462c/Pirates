@@ -18,6 +18,8 @@ func _process(delta: float) -> void:
 		if nearest_pirate == null or dist < nearest_dist:
 			nearest_dist = dist
 			nearest_pirate = pirate
+	if nearest_pirate == null:
+		return
 	var direction = (nearest_pirate.global_position - global_position).normalized()
 	global_rotation = atan2(direction.x, -direction.y)
 	

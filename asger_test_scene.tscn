@@ -7,5 +7,9 @@
 script = ExtResource("1_fe3kn")
 
 [node name="Playerboat" parent="." instance=ExtResource("2_50n5g")]
+position = Vector2(0, 0)
+collision_layer = 1
 
 [node name="Playerboat2" parent="." instance=ExtResource("2_50n5g")]
+position = Vector2(0, 0)
+collision_layer = 1

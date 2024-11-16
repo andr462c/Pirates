@@ -4,6 +4,7 @@
 
 [node name="Ak47" type="Node2D"]
 script = ExtResource("1_jvytg")
+damage = 3
 
 [node name="Reload" type="Timer" parent="."]
 wait_time = 0.3

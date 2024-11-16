@@ -4,6 +4,10 @@ var shoot_direction: Vector2 = Vector2(1,0)
 @export var speed = 1000
 var reload_timer: Timer
 var can_shoot = true
+@export var damage = 20
+@export var kill_time = 0.5
+@export var shooting_timeout = 1
+@export var pattern = preload("res://objects/bullets/bullet_patterns/pattern.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +30,7 @@ func shoot():
 		return
 	can_shoot=false
 	var bullet = bullet_scene.instantiate()
-	bullet.init(global_position, speed, shoot_direction, [get_parent()])
+	bullet.init(global_position, speed, shoot_direction, Utils.get_parents(self), damage, kill_time, pattern)
 	get_tree().root.add_child(bullet)
 	reload_timer.start()	
 
