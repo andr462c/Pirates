@@ -28,12 +28,14 @@ func _ready():
 	#	weapons.append($Rpg)
 
 func _integrate_forces(state):
-	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	pass
+	#target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Update pos
-	target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if not jumping:
+		target_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if target_direction.length() > 0.1:
 		direction = target_direction
 		set_constant_force(direction*acceleration)
@@ -64,23 +66,22 @@ func _physics_process(delta):
 	# if speed.length() > max_speed:
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
-	print(jumptimer.time_left)
-	if Input.is_action_just_pressed("key_jump") and not jumping and jumptimer.is_stopped():
+	if Input.is_action_pressed("key_jump") and not jumping and jumptimer.is_stopped():
 		jumping = true
 		z_speed = 0.1
 		set_collision_layer_value(1,false)
 		set_collision_mask_value(1,false)
-		jumptimer.start()
 		
 	if jumping:
 		z += z_speed
-		z_speed -= delta
+		z_speed -= delta*0.5
 		if z < 0:
 			z = 0
 			jumping = false
 			set_collision_layer_value(1, true)
 			set_collision_mask_value(1, true)
-		sprite.scale = Vector2(1+z,1+z)
+			jumptimer.start(0.3)
+		sprite.scale = Vector2(1+z*2,1+z*2)
 
 	if should_shoot:
 		shoot()
