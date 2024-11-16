@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7y3wycwnie7d"]
+[gd_scene load_steps=10 format=3 uid="uid://b7y3wycwnie7d"]
 
 [ext_resource type="Script" path="res://objects/playerboat.gd" id="1_nphoy"]
 [ext_resource type="Texture2D" uid="uid://d4ixbobcprqbj" path="res://assets/boat/rubberboat.png" id="2_0x2yp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1olawvn7djot" path="res://objects/sounds/hit_sound.tscn" id="4_qhluj"]
 [ext_resource type="Texture2D" uid="uid://duff7yvs2avtb" path="res://assets/people/ak.png" id="5_h18fo"]
 [ext_resource type="PackedScene" uid="uid://daqwihar2pbyj" path="res://objects/sounds/jump_sound.tscn" id="5_q3q1q"]
+[ext_resource type="PackedScene" uid="uid://bly38omb7mkvm" path="res://objects/sprite_modulator.tscn" id="8_xilfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgfhq"]
 radius = 8.51469
@@ -44,3 +45,6 @@ texture = ExtResource("5_h18fo")
 [node name="HitSound" parent="." instance=ExtResource("4_qhluj")]
 
 [node name="JumpSound" parent="." instance=ExtResource("5_q3q1q")]
+
+[node name="SpriteModulator" parent="." instance=ExtResource("8_xilfc")]
+time = 0.2

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bly38omb7mkvm"]
+
+[ext_resource type="Script" path="res://objects/sprite_modulator.gd" id="1_tsfoe"]
+
+[node name="SpriteModulator" type="Node2D"]
+script = ExtResource("1_tsfoe")
+time = 0.1

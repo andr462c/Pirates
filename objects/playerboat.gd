@@ -29,6 +29,9 @@ var jump_sound = $JumpSound
 
 var death_sound = preload("res://objects/sounds/player_die.tscn")
 
+@onready
+var sprite_modulator = $SpriteModulator
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
@@ -107,6 +110,7 @@ func take_damage(damage: float):
 	if !hit_sound.playing:
 		hit_sound.play()
 	print("health: ", health)
+	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		get_tree().root.add_child(death_sound.instantiate())
 		queue_free()

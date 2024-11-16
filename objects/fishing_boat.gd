@@ -1,7 +1,9 @@
 extends Node2D
 
 @onready var enemy_movement = $EnemyMovement
-@export var health = 1
+@export var health = 1000
+@onready var sprite = $Sprite2D
+@onready var sprite_modulator = $SpriteModulator
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,8 +18,8 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage(damage: float):
-	print("Enemy taking damage")
 	health -= damage
+	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		queue_free()
 	
