@@ -8,6 +8,7 @@ var number_of_bullets = 5
 var fan_spread = PI / 2
 var reload_timer: Timer
 var can_shoot = true
+var kill_time = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +37,8 @@ func shoot():
 		var real_direction = shoot_direction.rotated(offset)
 		var bullet = bullet_scene.instantiate()
 		bullet.init(global_position, speed, real_direction, get_parent())
+		var kill_timer = bullet.get_node("killtimer") as Timer
+		kill_timer.wait_time = kill_time
 		get_tree().root.add_child(bullet)
 		offset += delta
 	
