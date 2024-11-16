@@ -5,17 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://c75bvt1bu8dpu" path="res://objects/weapons/ak47.tscn" id="3_aoqy5"]
 [ext_resource type="PackedScene" uid="uid://b1olawvn7djot" path="res://objects/sounds/hit_sound.tscn" id="4_qhluj"]
 [ext_resource type="PackedScene" uid="uid://daqwihar2pbyj" path="res://objects/sounds/jump_sound.tscn" id="5_q3q1q"]
+[ext_resource type="PackedScene" uid="uid://dv73jsbokbm6n" path="res://objects/people/pirate.tscn" id="4_mkko0"]
+[ext_resource type="Texture2D" uid="uid://duff7yvs2avtb" path="res://assets/people/ak.png" id="5_h18fo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgfhq"]
 radius = 8.51469
 
 [node name="Playerboat" type="RigidBody2D"]
+z_index = 100
 position = Vector2(-1, 0)
 collision_layer = 5
 mass = 150.0
 gravity_scale = 0.0
 linear_damp = 10.0
 script = ExtResource("1_nphoy")
+health = 10000
 
 [node name="CollisionShapeWater" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qgfhq")
@@ -33,3 +37,9 @@ one_shot = true
 [node name="HitSound" parent="." instance=ExtResource("4_qhluj")]
 
 [node name="JumpSound" parent="." instance=ExtResource("5_q3q1q")]
+[node name="Pirate" parent="Weapons/Ak47" instance=ExtResource("4_mkko0")]
+rotation = 1.5708
+
+[node name="Sprite2D2" type="Sprite2D" parent="Weapons/Ak47/Pirate"]
+position = Vector2(0, -3)
+texture = ExtResource("5_h18fo")

@@ -1,4 +1,5 @@
 extends Node2D
+
 @export var bullet_scene = preload("res://objects/bullets/normal_bullet.tscn")
 var shoot_direction: Vector2 = Vector2(1,0)
 @export var speed = 5000
@@ -23,6 +24,7 @@ func _process(delta):
 func update_stats(playerboat):
 	shoot_direction = playerboat.shoot_direction
 	speed = speed*playerboat.bullet_speed_multiplier
+	global_rotation = shoot_direction.angle()
 
 
 func shoot():

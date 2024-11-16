@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpudv758nxkv0"]
+
+[ext_resource type="Script" path="res://objects/enemies/spinshooter.gd" id="1_ixdns"]
+
+[node name="spinshooter" type="Node2D"]
+script = ExtResource("1_ixdns")

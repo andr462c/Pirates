@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfdu7fbrsgix8"]
+
+[ext_resource type="Texture2D" uid="uid://cug7w8827csr8" path="res://assets/boat/naersk.png" id="1_bfw2s"]
+[ext_resource type="PackedScene" uid="uid://doqs7cw0jqufe" path="res://objects/people/fisherman.tscn" id="2_i21a1"]
+[ext_resource type="PackedScene" uid="uid://dpudv758nxkv0" path="res://objects/enemies/spinshooter.tscn" id="2_ncvn5"]
+[ext_resource type="PackedScene" path="res://objects/weapons/shotgun.tscn" id="3_mtay0"]
+[ext_resource type="PackedScene" uid="uid://4neu08f3rg8r" path="res://objects/bullets/bullet_patterns/bullet_pattern1_stopNgo.tscn" id="4_4t048"]
+[ext_resource type="PackedScene" uid="uid://c4a2mt7n17ypa" path="res://objects/bullets/bullet_patterns/bullet_pattern3_Sine.tscn" id="5_xshiw"]
+[ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="7_debkm"]
+[ext_resource type="Script" path="res://objects/enemies/container_shooter.gd" id="8_50ntm"]
+
+[node name="Naersk" type="RigidBody2D"]
+mass = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bfw2s")
+
+[node name="spinshooter" parent="." instance=ExtResource("2_ncvn5")]
+position = Vector2(0, 66)
+
+[node name="Shotgun" parent="spinshooter" instance=ExtResource("3_mtay0")]
+speed = 1000
+number_of_bullets = 10
+fan_spread = 3.0
+kill_time = 100.0
+shooting_timeout = 2
+pattern = ExtResource("4_4t048")
+
+[node name="spinshooter2" parent="." instance=ExtResource("2_ncvn5")]
+position = Vector2(0, 66)
+
+[node name="Shotgun" parent="spinshooter2" instance=ExtResource("3_mtay0")]
+position = Vector2(-1, 0)
+speed = 1000
+number_of_bullets = 10
+fan_spread = 6.283
+kill_time = 100.0
+shooting_timeout = 3
+pattern = ExtResource("5_xshiw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(40, 127, 40, -85, 11, -126, -13, -128, -39, -84, -39, 128)
+
+[node name="Fisherman" parent="." instance=ExtResource("2_i21a1")]
+position = Vector2(-1, 115)
+
+[node name="Fisherman2" parent="." instance=ExtResource("2_i21a1")]
+position = Vector2(-1, -117)
+
+[node name="EnemyBase" parent="." instance=ExtResource("7_debkm")]
+angular_factor = 0.002
+points = [Vector2(400, 400), Vector2(600, 600)]
+
+[node name="container_shooter" type="Node2D" parent="."]
+script = ExtResource("8_50ntm")
+
+[node name="Timer" type="Timer" parent="container_shooter"]
+wait_time = 2.0
+one_shot = true
+
+[node name="containertimer" type="Timer" parent="container_shooter"]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="container_shooter/containertimer" to="container_shooter" method="_on_containertimer_timeout"]

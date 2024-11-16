@@ -4,7 +4,9 @@ extends Node2D
 @export var level = 0
 @export var level_enemies = [
 	[preload("res://objects/enemies/fishing_boat.tscn")],
+	[preload("res://objects/enemies/navy_ship.tscn")],
 	[preload("res://objects/enemies/fishing_boat.tscn"), preload("res://objects/enemies/fishing_boat.tscn")],
+	[preload("res://objects/enemies/naersk.tscn")],
 ]
 
 var won = false
