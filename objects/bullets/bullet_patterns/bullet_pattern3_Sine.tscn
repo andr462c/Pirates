@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4a2mt7n17ypa"]
+
+[ext_resource type="Script" path="res://objects/bullets/bullet_patterns/bullet_pattern3_Sine.gd" id="1_ep1sf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3xov"]
+
+[node name="SinePattern" type="RigidBody2D"]
+collision_layer = 2
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_f3xov")
+gravity_scale = 0.0
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_ep1sf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

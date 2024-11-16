@@ -21,7 +21,9 @@ shape = SubResource("CircleShape2D_qgfhq")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0x2yp")
 
-[node name="Ak47" parent="." instance=ExtResource("3_aoqy5")]
-
 [node name="Jumptimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Ak47" parent="Weapons" instance=ExtResource("3_aoqy5")]

@@ -7,12 +7,12 @@
 [node name="FrankTestScene" type="Node2D"]
 position = Vector2(1, 1)
 
+[node name="Enemy" parent="." instance=ExtResource("2_03v2g")]
+
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Playerboat" parent="Players" instance=ExtResource("1_bi0e7")]
 position = Vector2(84, 178)
-
-[node name="FishingBoat" parent="." instance=ExtResource("2_03v2g")]
 
 [node name="Background" parent="." instance=ExtResource("3_x6und")]
 z_index = -10

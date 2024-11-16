@@ -23,9 +23,7 @@ func _ready():
 	sprite = $Sprite2D
 	jumptimer = $Jumptimer
 	gravity_scale = 0
-	weapons.append($Ak47)
-	#weapons.append($Shotgun)
-	#	weapons.append($Rpg)
+	weapons = Utils.GetWeapons(self)
 
 func _integrate_forces(state):
 	pass
