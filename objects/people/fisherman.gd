@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var players: Node2D = get_node('/root/FrankTestScene/Players')
+@onready var players: Node2D = Utils.find_child(get_tree().root, "Players")
 var shoot_direction = Vector2(0, 0)
 var bullet_speed_multiplier = 1.0
 var weapons = []
