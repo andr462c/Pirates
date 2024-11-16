@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c80ewlusa1n44"]
+[gd_scene load_steps=7 format=3 uid="uid://c80ewlusa1n44"]
 
 [ext_resource type="Shader" path="res://objects/background.gdshader" id="1_rhh8a"]
 
@@ -15,10 +15,58 @@ shader_parameter/WATER_COL = Vector4(0.580392, 0.705882, 0.776471, 1)
 shader_parameter/WATER2_COL = Vector4(0.513726, 0.635294, 0.776471, 1)
 shader_parameter/FOAM_COL = Vector4(0.784314, 0.792157, 0.870588, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fki35"]
+size = Vector2(19.7995, 1.4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d20tb"]
+size = Vector2(2420, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikntb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8v1l"]
+size = Vector2(20, 1161)
+
 [node name="Background" type="Node2D"]
 z_index = -100
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_nflf7")
-offset_right = 600.0
-offset_bottom = 400.0
+offset_right = 1200.0
+offset_bottom = 800.0
+
+[node name="TopWall" type="Area2D" parent="."]
+scale = Vector2(100, 100)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TopWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall/StaticBody2D"]
+position = Vector2(5.03, -0.72)
+scale = Vector2(1.247, 1)
+shape = SubResource("RectangleShape2D_fki35")
+
+[node name="BottomWall" type="Area2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D"]
+position = Vector2(537, 848)
+scale = Vector2(0.996967, 1)
+shape = SubResource("RectangleShape2D_d20tb")
+
+[node name="LeftWall" type="Area2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
+position = Vector2(-45, 280)
+scale = Vector2(4.56983, 67.0691)
+shape = SubResource("RectangleShape2D_ikntb")
+
+[node name="RightWall" type="Area2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
+position = Vector2(1236, 350)
+scale = Vector2(3.6, 1)
+shape = SubResource("RectangleShape2D_n8v1l")
