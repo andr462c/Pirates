@@ -107,6 +107,7 @@ func take_damage(damage: float):
 	if !hit_sound.playing:
 		hit_sound.play()
 	print("health: ", health)
+	get_node("/root/Main/Healthbars/P%dHealth" % id).value -= max(damage, 0)
 	if health <= 0:
 		get_tree().root.add_child(death_sound.instantiate())
 		queue_free()

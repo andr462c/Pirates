@@ -21,9 +21,12 @@ func _ready() -> void:
 	var players = Node2D.new()
 	players.name = "Players"
 	var player_class = preload("res://objects/playerboat.tscn")
-	var player = player_class.instantiate()
-	player.global_position = Vector2(300, 200)
-	players.add_child(player)
+	var offset = Vector2(100, 0)
+	for id in Input.get_connected_joypads():
+		var player = player_class.instantiate()
+		player.global_position = Vector2(300, 200) + id * offset
+		player.id = id
+		players.add_child(player)
 	add_child(players)
 	
 	var enemies = Node2D.new()
@@ -39,10 +42,14 @@ func construct_enemies():
 	var enemies = level_enemies[level]
 	var enemy_node = $Enemies
 	var offset = Vector2(0, 0)
+	var hp_sum = 0
 	for enemy in enemies:
 		var instance: Node2D = enemy.instantiate()
 		instance.global_position = Vector2(300, 50)
 		enemy_node.add_child(instance)
+		hp_sum += instance.health
+	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).max_value = hp_sum
+	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).value = hp_sum
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
