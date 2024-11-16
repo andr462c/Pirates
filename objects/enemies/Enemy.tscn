@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ci8t6m6d6ne"]
+
+[ext_resource type="Script" path="res://objects/enemies/fishing_boat.gd" id="1_onowu"]
+[ext_resource type="Texture2D" uid="uid://d4ixbobcprqbj" path="res://assets/boat/rubberboat.png" id="3_bil0q"]
+[ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="4_lwue5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0smk"]
+size = Vector2(23.5933, 29.1435)
+
+[node name="Enemy" type="Node2D"]
+position = Vector2(50, 200)
+script = ExtResource("1_onowu")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+scale = Vector2(1, 0.457)
+skew = 0.015959
+mass = 500.0
+linear_damp = 1.0
+angular_damp = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-3.95171, 10.8875)
+shape = SubResource("RectangleShape2D_q0smk")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-4.27694, 10.7659)
+scale = Vector2(1.745, 1)
+texture = ExtResource("3_bil0q")
+
+[node name="EnemyMovement" parent="RigidBody2D" instance=ExtResource("4_lwue5")]
