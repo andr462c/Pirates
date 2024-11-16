@@ -1,35 +1,27 @@
 extends Node2D
 
-const Pattern = preload("res://objects/bullets/bullet_patterns/pattern.gd")
-
 @export var bullet_scene = preload("res://objects/bullets/normal_bullet.tscn")
 var shoot_direction: Vector2 = Vector2(1,0)
 @export var speed = 5000
-@export var number_of_bullets = 5
-@export_range(0.1, PI)
-var fan_spread = PI / 2
 var reload_timer: Timer
 var can_shoot = true
-@export var kill_time = 0.5
-@export var damage = 20
-@export var shooting_timeout = 1
+@export var damage = 3
+@export var shooting_timeout = 0.4
+@export var kill_time = 2
 @export var pattern = preload("res://objects/bullets/bullet_patterns/pattern.tscn")
+@export var number_of_bullets = 10
+@export_range(0.1, PI)
+var fan_spread = PI / 2
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	reload_timer = $Reload
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 
 func update_stats(playerboat):
 	shoot_direction = playerboat.shoot_direction
 	speed = speed*playerboat.bullet_speed_multiplier
+	global_rotation = atan2(-shoot_direction.x, shoot_direction.y)
 	
-
 func shoot():
 	if not can_shoot:
 		return

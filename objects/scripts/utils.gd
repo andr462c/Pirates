@@ -45,3 +45,14 @@ static func bounding_box(nodes: Array[Node2D]) -> Array[Vector2]:
 		top_left.y = min(top_left.y, p.y)
 		bottom_right.y = max(bottom_right.y, p.y)
 	return [top_left, bottom_right]
+
+
+static func find_nearest(pos: Vector2, nodes: Array[Node2D]) -> Node2D:
+	var nearest_node: Node2D
+	var nearest_dist = 0
+	for node in nodes:
+		var dist = (pos - node.global_position).length()
+		if nearest_node == null or dist < nearest_dist:
+			nearest_dist = dist
+			nearest_node = node
+	return nearest_node

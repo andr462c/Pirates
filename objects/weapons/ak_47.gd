@@ -1,4 +1,5 @@
 extends Node2D
+
 @export var bullet_scene = preload("res://objects/bullets/normal_bullet.tscn")
 var shoot_direction: Vector2 = Vector2(1,0)
 @export var speed = 5000

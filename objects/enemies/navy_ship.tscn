@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgmmp0lw7m84j"]
+
+[ext_resource type="Script" path="res://objects/enemies/navy_ship.gd" id="1_x1i2n"]
+[ext_resource type="Texture2D" uid="uid://d06c65sb06ytr" path="res://assets/boat/navyship.png" id="2_2hvq8"]
+[ext_resource type="PackedScene" uid="uid://c33ytwvk1wybr" path="res://objects/weapons/Turret.tscn" id="3_xrs7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kl4f"]
+size = Vector2(52, 252)
+
+[node name="NavyShip" type="RigidBody2D"]
+rotation = 1.5708
+mass = 100000.0
+script = ExtResource("1_x1i2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -7.10543e-15)
+shape = SubResource("RectangleShape2D_1kl4f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2hvq8")
+
+[node name="Weapons" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Turret" parent="Weapons" instance=ExtResource("3_xrs7y")]
+position = Vector2(-52, -24)
+
+[node name="Turret2" parent="Weapons" instance=ExtResource("3_xrs7y")]
+position = Vector2(24, 0)
+
+[node name="Turret3" parent="Weapons" instance=ExtResource("3_xrs7y")]
+position = Vector2(-51, 25)
