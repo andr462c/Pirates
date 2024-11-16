@@ -22,7 +22,7 @@ func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_w
 func _ready():
 	apply_central_impulse(direction*speed*mass)
 	sprite.rotation = direction.angle()
-	$killtimer.wait_time = kill_timer
+	$killtimer.start(kill_timer)
 
 
 func _on_body_entered(body):
@@ -30,10 +30,13 @@ func _on_body_entered(body):
 		body.take_damage(damage)
 	queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _integrate_forces(state):
 	if bullet_pattern != null:
-		bullet_pattern.add_pattern_force(self, delta)
+		bullet_pattern.add_pattern_force(self, 0.01)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _physics_process(delta):
+	#if bullet_pattern != null:
+		#bullet_pattern.add_pattern_force(self, delta)
 
 func _on_killtimer_timeout():
 	queue_free()	

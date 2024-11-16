@@ -6,7 +6,7 @@ const Pattern = preload("res://objects/bullets/bullet_patterns/pattern.gd")
 var shoot_direction: Vector2 = Vector2(1,0)
 @export var speed = 5000
 @export var number_of_bullets = 5
-@export_range(0.1, PI)
+@export_range(0.1, 2*PI)
 var fan_spread = PI / 2
 var reload_timer: Timer
 var can_shoot = true
