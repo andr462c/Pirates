@@ -14,5 +14,4 @@ func _process(delta):
 	# Set the default gravity strength to 980.
 	var force = sin(time)*50
 	PhysicsServer2D.area_set_param(get_viewport().find_world_2d().space, PhysicsServer2D.AREA_PARAM_GRAVITY, force)
-	print(force)
-	PhysicsServer2D.area_set_param(get_viewport().find_world_2d().space, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, Vector2(1,1).normalized())
+	PhysicsServer2D.area_set_param(get_viewport().find_world_2d().space, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, Vector2(-1,1).normalized())

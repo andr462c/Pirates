@@ -4,12 +4,11 @@ uniform float mulscale = 5.0;
 uniform float height = 0.4;
 uniform float tide = 0.04;
 uniform float foamthickness = 0.03;
-uniform float timescale = 2;
+uniform float timescale = 0.8;
 uniform float waterdeep = 0.3;
-uniform vec4 WATER_COL =  vec4(0.04, 0.38, 0.88, 1.0);
-uniform vec4 WATER2_COL =  vec4(0.04, 0.35, 0.78, 1.0);
-uniform vec4 FOAM_COL = vec4(0.8125, 0.9609, 0.9648, 1.0);
-
+uniform vec4 WATER_COL = vec4( 0.5803921568627451,0.7058823529411765,0.7764705882352941 ,1.0);
+uniform vec4 WATER2_COL = vec4( 0.5137254901960784,0.6352941176470588,0.7764705882352941 ,1.0);
+uniform vec4 FOAM_COL = vec4( 0.7843137254901961,0.792156862745098,0.8705882352941177 ,1.0);
 
 float rand(vec2 input){
 	return fract(sin(dot(input,vec2(23.53,44.0)))*42350.45);

@@ -16,10 +16,12 @@ var z_speed = 0
 var colshape: CollisionShape2D
 var weapons = []
 @export var health = 100
+var jumptimer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
+	jumptimer = $Jumptimer
 	gravity_scale = 0
 	weapons.append($Ak47)
 	#weapons.append($Shotgun)
@@ -62,11 +64,13 @@ func _physics_process(delta):
 	# if speed.length() > max_speed:
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
-	if Input.is_action_just_pressed("key_jump") and not jumping:
+	print(jumptimer.time_left)
+	if Input.is_action_just_pressed("key_jump") and not jumping and jumptimer.is_stopped():
 		jumping = true
 		z_speed = 0.1
 		set_collision_layer_value(1,false)
 		set_collision_mask_value(1,false)
+		jumptimer.start()
 		
 	if jumping:
 		z += z_speed

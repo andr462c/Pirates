@@ -2,22 +2,23 @@
 
 [ext_resource type="Shader" path="res://objects/background.gdshader" id="1_rhh8a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_23iq5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nflf7"]
 shader = ExtResource("1_rhh8a")
 shader_parameter/OCTAVE = 6
-shader_parameter/mulscale = 4.0
+shader_parameter/mulscale = 5.0
 shader_parameter/height = 0.4
-shader_parameter/tide = 0.03
-shader_parameter/foamthickness = 0.015
-shader_parameter/timescale = 1.0
+shader_parameter/tide = 0.04
+shader_parameter/foamthickness = 0.03
+shader_parameter/timescale = 0.8
 shader_parameter/waterdeep = 0.3
-shader_parameter/WATER_COL = Vector4(0.04, 0.38, 0.88, 1)
-shader_parameter/WATER2_COL = Vector4(0.04, 0.35, 0.78, 1)
-shader_parameter/FOAM_COL = Vector4(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/WATER_COL = Vector4(0.580392, 0.705882, 0.776471, 1)
+shader_parameter/WATER2_COL = Vector4(0.513726, 0.635294, 0.776471, 1)
+shader_parameter/FOAM_COL = Vector4(0.784314, 0.792157, 0.870588, 1)
 
 [node name="Background" type="Node2D"]
+z_index = -100
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_23iq5")
+material = SubResource("ShaderMaterial_nflf7")
 offset_right = 600.0
 offset_bottom = 400.0

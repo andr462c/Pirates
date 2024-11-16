@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://blv2p86dy2t5l"]
+[gd_scene load_steps=5 format=3 uid="uid://blv2p86dy2t5l"]
 
 [ext_resource type="PackedScene" uid="uid://b7y3wycwnie7d" path="res://objects/playerboat.tscn" id="1_7ukj7"]
 [ext_resource type="PackedScene" uid="uid://qkj8cirhlbuu" path="res://objects/obstacles/container.tscn" id="2_xlktq"]
+[ext_resource type="PackedScene" uid="uid://c80ewlusa1n44" path="res://objects/background.tscn" id="3_gscr2"]
+[ext_resource type="PackedScene" uid="uid://uwpeen6i7ycy" path="res://objects/env_controler.tscn" id="4_6acwo"]
 
 [node name="AndreasScene" type="Node2D"]
 
@@ -14,3 +16,8 @@ position = Vector2(240, 162)
 
 [node name="Container2" parent="." instance=ExtResource("2_xlktq")]
 position = Vector2(165, 254)
+
+[node name="EnvControler" parent="." instance=ExtResource("4_6acwo")]
+position = Vector2(-2, 0)
+
+[node name="Background" parent="." instance=ExtResource("3_gscr2")]

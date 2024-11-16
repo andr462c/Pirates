@@ -8,6 +8,7 @@
 radius = 8.51469
 
 [node name="Playerboat" type="RigidBody2D"]
+position = Vector2(-1, 0)
 collision_layer = 5
 mass = 150.0
 gravity_scale = 0.0
@@ -21,3 +22,6 @@ shape = SubResource("CircleShape2D_qgfhq")
 texture = ExtResource("2_0x2yp")
 
 [node name="Ak47" parent="." instance=ExtResource("3_aoqy5")]
+
+[node name="Jumptimer" type="Timer" parent="."]
+one_shot = true
