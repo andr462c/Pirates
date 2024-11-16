@@ -20,7 +20,6 @@ var weapons = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $Sprite2D
-	colshape = $CollisionShape2D
 	gravity_scale = 0
 	weapons.append($Ak47)
 	#weapons.append($Shotgun)
@@ -66,15 +65,17 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("key_jump") and not jumping:
 		jumping = true
 		z_speed = 0.1
-		colshape.disabled = true
+		set_collision_layer_value(1,false)
+		set_collision_mask_value(1,false)
 		
 	if jumping:
 		z += z_speed
-		z_speed -= delta*0.5
+		z_speed -= delta
 		if z < 0:
 			z = 0
 			jumping = false
-			colshape.disabled = false
+			set_collision_layer_value(1, true)
+			set_collision_mask_value(1, true)
 		sprite.scale = Vector2(1+z,1+z)
 
 	if should_shoot:
