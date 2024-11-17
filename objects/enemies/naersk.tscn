@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c86xy4w00j3ca"]
+[gd_scene load_steps=12 format=3 uid="uid://cfdu7fbrsgix8"]
 
 [ext_resource type="Texture2D" uid="uid://cug7w8827csr8" path="res://assets/boat/naersk.png" id="1_bfw2s"]
 [ext_resource type="Script" path="res://objects/enemies/naersk.gd" id="1_lyx4e"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="7_debkm"]
 [ext_resource type="Script" path="res://objects/enemies/container_shooter.gd" id="8_50ntm"]
 [ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="10_77emx"]
-[ext_resource type="PackedScene" uid="uid://ckxgxr575whlp" path="res://objects/sounds/nearsk_hit_sound.tscn" id="11_8ms7s"]
+[ext_resource type="PackedScene" path="res://objects/sounds/nearsk_hit_sound.tscn" id="11_8ms7s"]
 
 [node name="Naersk" type="RigidBody2D"]
 mass = 10000.0
