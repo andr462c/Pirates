@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxr8f"]
 radius = 5.0
 
-[node name="NormalBullet" type="RigidBody2D" groups=["bullet"]]
+[node name="NormalBullet" type="RigidBody2D" groups=["Bullet"]]
 collision_layer = 2
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_f3xov")
