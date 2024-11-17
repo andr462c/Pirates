@@ -4,6 +4,7 @@ extends Node2D
 var shoot_direction = Vector2(0, 0)
 var bullet_speed_multiplier = 1.0
 var weapons = []
+var kill_time = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,4 +22,5 @@ func _process(delta: float) -> void:
 	shoot_direction = Vector2.from_angle(global_rotation - PI/2)
 	for weapon in weapons:
 		weapon.update_stats(self)
+		weapon.kill_time = 20
 		weapon.shoot()

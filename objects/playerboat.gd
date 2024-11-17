@@ -19,7 +19,7 @@ var colshape: CollisionShape2D
 var weapons = []
 @export var health = 100
 var jumptimer: Timer
-@export var knockback = 100000
+@export var knockback = 10000
 
 var id = 0
 

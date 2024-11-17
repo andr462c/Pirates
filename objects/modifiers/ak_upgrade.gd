@@ -3,8 +3,8 @@ extends Node2D
 func modify_player(player: PlayerBoat) -> void:
 	if player.get_node("Weapons").has_node("Ak47"):
 		var turret = player.get_node("Weapons").get_node("Ak47")
-		turret.shooting_timeout *= 0.8
-		turret.kill_time += 2
+		turret.shooting_timeout *= 0.6
+		turret.kill_time += 1
 		turret.speed += 500
 		turret.pattern = preload("res://objects/bullets/bullet_patterns/bullet_pattern3_Sine.tscn")
 	else:
