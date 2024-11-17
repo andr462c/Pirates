@@ -111,13 +111,14 @@ func shoot():
 		weapon.update_stats(self)
 		weapon.shoot()	
 
+func get_healthbar():
+	return get_node("/root/Main/Healthbars/P%dHealth" % id)
 
 func take_damage(damage: float):
 	health -= damage
+	get_healthbar().value = health
 	if !hit_sound.playing:
 		hit_sound.play()
-	get_node("/root/Main/Healthbars/P%dHealth" % id).value -= max(damage, 0)
-	print("health: ", health, ", ", damage)
 	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		get_tree().root.add_child(death_sound.instantiate())

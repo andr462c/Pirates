@@ -21,8 +21,8 @@ var knockback_up = preload("res://objects/modifiers/knockback.tscn")
 
 
 @onready var card_selection = get_node("../CardSelectionWater")
-@export var level = 0
 @export var healthadder = 0.2
+@export var level = -1
 @export var level_enemies = [
 	[fishboat],
 	[fishboat, fishboat],
@@ -34,6 +34,7 @@ var knockback_up = preload("res://objects/modifiers/knockback.tscn")
 	[navy, fishboat, fishboat],
 	[navy, navy]
 ]
+var players: Node2D
 
 var level_music = [
 	sea_shanty_8,
@@ -73,7 +74,7 @@ var won = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var players = Node2D.new()
+	players = Node2D.new()
 	players.name = "Players"
 	var player_class = preload("res://objects/playerboat.tscn")
 	var offset = Vector2(100, 0)
@@ -93,11 +94,17 @@ func _ready() -> void:
 	var enemies = Node2D.new()
 	enemies.name = "Enemies"
 	add_child(enemies)
-	
-	construct_enemies()
-	
+	next_level()
 	var camera = preload("res://objects/Camera.tscn")
 	add_child(camera.instantiate())
+
+func next_level():
+	level += 1
+	construct_enemies()
+	for player in players.get_children():
+		player.health = player.max_health
+		player.get_healthbar().value = player.health
+	won = false
 
 func construct_enemies():
 	var enemies = []
