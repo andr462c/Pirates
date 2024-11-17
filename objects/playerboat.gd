@@ -12,6 +12,8 @@ var sprite: Sprite2D
 var shoot_direction = Vector2(0, 0)
 var target_shoot_direction: Vector2
 var bullet_speed_multiplier = 1.0
+var scale_multiplier = 1.0
+var damage_multiplier = 1.0
 var jumping = false
 var z = 0.0
 var z_speed = 0
@@ -99,7 +101,9 @@ func _physics_process(delta):
 			set_collision_layer_value(1, true)
 			set_collision_mask_value(1, true)
 			jumptimer.start(0.3)
-		scale = Vector2(1+z*2,1+z*2)
+		scale = Vector2(1+z*2,1+z*2)*scale_multiplier
+	else:
+		scale = Vector2(1,1)* scale_multiplier
 
 	if should_shoot and not jumping and jumptimer.is_stopped():
 		shoot()
@@ -109,6 +113,7 @@ func shoot():
 	weapons = Utils.GetWeapons(self)
 	for weapon in weapons:
 		weapon.update_stats(self)
+		weapon.damage *= damage_multiplier
 		weapon.shoot()	
 
 func get_healthbar():

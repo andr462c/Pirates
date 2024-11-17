@@ -1,3 +1,14 @@
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
 [gd_scene load_steps=7 format=3 uid="uid://bpuyyprgy2euv"]
 
 [ext_resource type="PackedScene" uid="uid://c80ewlusa1n44" path="res://objects/background.tscn" id="1_xbi6t"]
