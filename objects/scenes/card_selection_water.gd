@@ -75,12 +75,14 @@ func confirm_selection():
 	
 	get_child(item_index).get_node("Modifier").modify_player(player)
 	for child in get_children():
+		if !child.name.contains("Card"):
+			continue
 		child.get_node("Modifier").queue_free()
 	
 	var controller = get_node("../Controller")
 	controller.level += 1
 	controller.construct_enemies()
 	controller.won = false
-	if has_node("../Music"):
-		get_node("../Music").queue_free()
+	if has_node("../ChillMusic"):
+		get_node("../ChillMusic").queue_free()
 	

@@ -10,7 +10,6 @@
 size = Vector2(100, 140)
 
 [node name="CardSelectionWater" type="Node2D"]
-visible = false
 script = ExtResource("1_akldy")
 
 [node name="Card1" type="Node2D" parent="."]
@@ -30,6 +29,14 @@ z_index = -1
 z_as_relative = false
 texture = ExtResource("3_lmgsb")
 
+[node name="Desc" type="RichTextLabel" parent="Card1"]
+offset_left = -52.0
+offset_top = -2.0
+offset_right = 50.0
+offset_bottom = 70.0
+bbcode_enabled = true
+text = "[center]tmp[/center]"
+
 [node name="Card2" type="Node2D" parent="."]
 position = Vector2(160, 0)
 
@@ -48,6 +55,14 @@ z_index = -1
 z_as_relative = false
 texture = ExtResource("3_lmgsb")
 
+[node name="Desc" type="RichTextLabel" parent="Card2"]
+offset_left = -52.0
+offset_top = -2.0
+offset_right = 50.0
+offset_bottom = 70.0
+bbcode_enabled = true
+text = "[center]tmp[/center]"
+
 [node name="Card3" type="Node2D" parent="."]
 position = Vector2(320, 0)
 
@@ -65,6 +80,14 @@ visible = false
 z_index = -1
 z_as_relative = false
 texture = ExtResource("3_lmgsb")
+
+[node name="Desc" type="RichTextLabel" parent="Card3"]
+offset_left = -52.0
+offset_top = -2.0
+offset_right = 50.0
+offset_bottom = 70.0
+bbcode_enabled = true
+text = "[center]tmp[/center]"
 
 [node name="UiSwitchSound" parent="." instance=ExtResource("4_fqubh")]
 

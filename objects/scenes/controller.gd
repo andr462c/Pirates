@@ -21,7 +21,11 @@ var level_music = [
 var chill_music_scene = preload("res://objects/sounds/calm_background_music.tscn")
 
 var cards = [
-	preload("res://objects/modifiers/movement_speed_increase.tscn")
+	preload("res://objects/modifiers/movement_speed_increase.tscn"),
+	preload("res://objects/modifiers/ak_upgrade.tscn"),
+	preload("res://objects/modifiers/rpg_upgrade.tscn"),
+	preload("res://objects/modifiers/turret_upgrade.tscn"),
+	preload("res://objects/modifiers/knockback.tscn")
 ]
 
 var won = false
@@ -77,13 +81,20 @@ func _process(delta: float) -> void:
 		card_selection.show_cards()
 		
 func add_random_cards():
+	cards.shuffle()
+	var index = 0
 	for child in card_selection.get_children():
-		var card = cards[0].instantiate()
+		if !child.name.contains("Card"):
+			continue
+		var card = cards[index].instantiate()
+		var desc = card.name
 		card.name = "Modifier"
 		child.add_child(card)
+		(child.get_node("Desc") as RichTextLabel).text = "[center]%s[/center]" % desc
+		index += 1
 
 func play_chill_music():
 	get_node("../Music").queue_free()
 	var new_music = chill_music_scene.instantiate()
-	new_music.name = "Music"
-	get_parent().add_child(new_music)
+	new_music.name = "ChillMusic"
+	get_parent().call_deferred("add_child", new_music)
