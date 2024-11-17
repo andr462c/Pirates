@@ -6,7 +6,7 @@ var shoot_direction: Vector2 = Vector2(1,0)
 var reload_timer: Timer
 var can_shoot = true
 @export var damage = 10
-@export var shooting_timeout = 1
+@export var shooting_timeout = 0.4
 @export var kill_time = 0.5
 @export var pattern = preload("res://objects/bullets/bullet_patterns/pattern.tscn")
 

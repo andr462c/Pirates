@@ -7,8 +7,14 @@ var sprite: Sprite2D
 var damage
 var kill_timer: float
 var bullet_pattern: BulletPattern
+var isplayerbullet: bool = false
+var knockback = 0.0
 
 func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_with: Array, _damage: float, _kill_timer: float, _bullet_pattern: BulletPattern):
+	for coll in dont_collide_with:
+		if coll.name == "Playerboat":
+			knockback = coll.knockback
+			isplayerbullet = true
 	position = _position
 	speed =	 _speed	
 	direction = _direction
@@ -26,8 +32,9 @@ func _ready():
 
 
 func _on_body_entered(body):
-	print("Hit something ", body)
-	if body.has_method("take_damage"):
+	if body.has_method("apply_impulse"):
+		body.apply_impulse(direction.normalized()*knockback)
+	if body.has_method("take_damage"):	
 		body.take_damage(damage)
 	queue_free()
 
