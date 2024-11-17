@@ -41,11 +41,16 @@ func _ready() -> void:
 	players.name = "Players"
 	var player_class = preload("res://objects/playerboat.tscn")
 	var offset = Vector2(100, 0)
-	for id in Input.get_connected_joypads():
+	for id in [0]:
 		var player = player_class.instantiate()
 		player.global_position = Vector2(200, 200) + id * offset
 		player.id = id
 		players.add_child(player)
+		var health_path = "../Healthbars/P{id}Health".format({"id": id})
+		var bar = get_node(health_path) as TextureProgressBar
+		print("health_path ", health_path, " ", bar)
+		bar.max_value = player.health
+		bar.value = player.health
 	add_child(players)
 	
 	var enemies = Node2D.new()

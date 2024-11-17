@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgmmp0lw7m84j"]
+[gd_scene load_steps=10 format=3 uid="uid://bgmmp0lw7m84j"]
 
 [ext_resource type="Script" path="res://objects/enemies/navy_ship.gd" id="1_x1i2n"]
 [ext_resource type="Texture2D" uid="uid://d06c65sb06ytr" path="res://assets/boat/navyship.png" id="2_2hvq8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://objects/enemies/spinshooter.tscn" id="5_3wgon"]
 [ext_resource type="PackedScene" uid="uid://c75bvt1bu8dpu" path="res://objects/weapons/ak47.tscn" id="6_63awu"]
 [ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="7_ekcb4"]
+[ext_resource type="PackedScene" path="res://objects/sounds/heavy_hit_sound.tscn" id="8_mypjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kl4f"]
 size = Vector2(52, 252)
@@ -69,6 +70,8 @@ kill_time = 2.0
 angular_factor = 0.001
 speed = 300000
 points = [Vector2(50, 100), Vector2(1000, 100)]
+
+[node name="HeavyHitSound" parent="." instance=ExtResource("8_mypjb")]
 
 [connection signal="timeout" from="AirStrikeWaveTimer" to="." method="_start_air_strike_wave"]
 [connection signal="timeout" from="SingleAirStrikeTimer" to="." method="_air_strike"]

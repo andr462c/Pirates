@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://uwpeen6i7ycy" path="res://objects/env_controler.tscn" id="2_v1eht"]
 [ext_resource type="Script" path="res://objects/scenes/controller.gd" id="3_ypdg7"]
 [ext_resource type="PackedScene" path="res://objects/scenes/card_selection_water.tscn" id="4_r371k"]
-[ext_resource type="PackedScene" path="res://objects/scenes/healthbar.tscn" id="5_74axc"]
+[ext_resource type="PackedScene" uid="uid://dx0rp8y33fejj" path="res://objects/scenes/healthbar.tscn" id="5_74axc"]
 
 [node name="Main" type="Node2D"]
 

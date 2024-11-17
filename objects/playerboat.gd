@@ -20,6 +20,7 @@ var weapons = []
 @export var health = 100
 var jumptimer: Timer
 @export var knockback = 10000
+var max_health = health
 
 var id = 0
 
@@ -35,6 +36,7 @@ var sprite_modulator = $SpriteModulator
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	max_health = health
 	sprite = $Sprite2D
 	jumptimer = $Jumptimer
 	gravity_scale = 0
@@ -108,6 +110,7 @@ func shoot():
 	for weapon in weapons:
 		weapon.update_stats(self)
 		weapon.shoot()	
+
 
 func take_damage(damage: float):
 	health -= damage

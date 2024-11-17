@@ -64,6 +64,7 @@ func take_damage(damage: float):
 	health -= damage
 	hit_sound.play()
 	sprite_modulator.modulate(sprite)
+	get_node("/root/Main/Healthbars/EnemyHealth").value -= max(damage, 0)
 	if health <= 0:
 		queue_free()
 

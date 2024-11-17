@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	for c in players.get_children():
 		pirates.append(c)
 	var nearest_pirate = Utils.find_nearest(global_position, pirates)
+	if nearest_pirate == null:
+		return
 	var direction = (nearest_pirate.global_position - global_position).normalized()
 	global_rotation = atan2(direction.x, -direction.y)
 	

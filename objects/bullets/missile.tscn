@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b242olqcfwydf"]
+[gd_scene load_steps=5 format=3 uid="uid://dlvlyvpq4bcg6"]
 
 [ext_resource type="Script" path="res://objects/bullets/missile.gd" id="1_av4yv"]
 [ext_resource type="Texture2D" uid="uid://c7iky7g3wl64c" path="res://assets/tmp_missile.png" id="2_64a7f"]
