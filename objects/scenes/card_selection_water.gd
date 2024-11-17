@@ -32,7 +32,7 @@ func _card1_entered(body: Node2D) -> void:
 	if item_index != 0:
 		switch_sound.play()
 	item_index = 0
-	$Card1/Outline.visible = true
+	$Card1/Outline.visible = false
 	$Card2/Outline.visible = false
 	$Card3/Outline.visible = false
 	player = body
@@ -43,7 +43,7 @@ func _card2_entered(body: Node2D) -> void:
 		switch_sound.play()
 	item_index = 1
 	$Card1/Outline.visible = false
-	$Card2/Outline.visible = true
+	$Card2/Outline.visible = false
 	$Card3/Outline.visible = false
 	player = body
 
@@ -54,33 +54,50 @@ func _card3_entered(body: Node2D) -> void:
 	item_index = 2
 	$Card1/Outline.visible = false
 	$Card2/Outline.visible = false
-	$Card3/Outline.visible = true
+	$Card3/Outline.visible = false
 	player = body
 
 
 func _card_left(bodt: Node2D) -> void:
 	pass
 
+var selected = 0
+var player_who_selected
 
 func confirm_selection():
 	if item_index == -1 || visible == false:
 		return
 	
+	if selected == 1 && player_who_selected == player:
+		return
+	
+	selected += 1
+	
 	print("Selected: ", item_index)
 	power_up_sound.play()
+	get_child(item_index).visible = false
+	get_node("Card%d/Area2D" % (item_index + 1)).monitoring = false
+	
+	get_child(item_index).get_node("Modifier").modify_player(player)
+	player_who_selected = player
+	
+	if selected < 2:
+		return
+		
+	for child in get_children():
+		child.visible = true
+		if !child.name.contains("Card"):
+			continue
+		child.get_node("Modifier").queue_free()
 	visible = false
 	$Card1/Area2D.monitoring = false
 	$Card2/Area2D.monitoring = false
 	$Card3/Area2D.monitoring = false
 	
-	get_child(item_index).get_node("Modifier").modify_player(player)
-	for child in get_children():
-		if !child.name.contains("Card"):
-			continue
-		child.get_node("Modifier").queue_free()
-	
 	var controller = get_node("../Controller")
 	if has_node("../ChillMusic"):
 		get_node("../ChillMusic").queue_free()
 	controller.next_level()
+	selected = 0
+	player_who_selected = null
 	
