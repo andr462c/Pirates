@@ -180,10 +180,18 @@ func _process(delta: float) -> void:
 		for player in players.get_children():
 			player.immortal = true
 		won = true
+		remove_bullets(get_tree().root)
 		play_chill_music()
 		add_random_cards()
 		card_selection.show_cards()
-		
+
+func remove_bullets(node: Node):
+	if node.is_in_group("Bullet"):
+		node.queue_free()
+	else:
+		for c in node.get_children():
+			remove_bullets(c)
+
 var added_turret = false
 func add_random_cards():
 	if level > 4 && !added_turret:

@@ -26,6 +26,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="pirater"
 
+[global_group]
+
+Bullet=""
+
 [input]
 
 ui_accept={
