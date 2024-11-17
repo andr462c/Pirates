@@ -78,9 +78,7 @@ func confirm_selection():
 		child.get_node("Modifier").queue_free()
 	
 	var controller = get_node("../Controller")
-	controller.level += 1
-	controller.construct_enemies()
-	controller.won = false
+	controller.next_level()
 	if has_node("../Music"):
 		get_node("../Music").queue_free()
 	
