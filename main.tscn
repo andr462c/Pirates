@@ -28,7 +28,7 @@ func _on_timer_timeout() -> void:
 [node name="Playerboat" parent="." instance=ExtResource("1_mah4u")]
 z_index = 0
 position = Vector2(125, 88)
-health = 100
+health = 50
 
 [node name="Container" parent="." instance=ExtResource("2_yniep")]
 position = Vector2(294, 150)

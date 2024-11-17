@@ -7,7 +7,7 @@ var sprite: Sprite2D = $Sprite2D
 var sprite_modulator = $SpriteModulator
 
 @export
-var health = 1000
+var health = 200
 
 @onready
 var hit_sound = $NearskHitSound
