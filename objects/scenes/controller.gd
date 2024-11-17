@@ -4,6 +4,14 @@ var fishboat = preload("res://objects/enemies/fishing_boat.tscn")
 var naersk = preload("res://objects/enemies/naersk.tscn")
 var navy = preload("res://objects/enemies/navy_ship.tscn")
 
+var sea_shanty_8 = preload("res://objects/sounds/sea_shanty_8_bit.tscn")
+var drum_delux_fast = preload("res://objects/sounds/drum_deluxe_fast.tscn")
+var shaky_chiptune = preload("res://objects/sounds/shaky_chip_tune.tscn")
+var bit_crushed = preload("res://objects/sounds/bit_crushed_nightcore.tscn")
+var hes_a_somali_pirate = preload("res://objects/sounds/hes_a_somali_pirate.tscn")
+var aggresive_drums = preload("res://objects/sounds/aggressive_drums.tscn")
+var complete_overdrive = preload("res://objects/sounds/complete_overdrive.tscn")
+
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
 @export var level_enemies = [
@@ -19,11 +27,28 @@ var navy = preload("res://objects/enemies/navy_ship.tscn")
 ]
 
 var level_music = [
-	preload("res://objects/sounds/complete_overdrive.tscn"),
-	preload("res://objects/sounds/complete_overdrive.tscn"),
-	preload("res://objects/sounds/complete_overdrive.tscn"),
-	preload("res://objects/sounds/complete_overdrive.tscn"),
-	preload("res://objects/sounds/complete_overdrive.tscn"),
+	sea_shanty_8,
+	sea_shanty_8,
+	drum_delux_fast,
+	drum_delux_fast,
+	complete_overdrive,
+	shaky_chiptune,
+	aggresive_drums,
+	hes_a_somali_pirate,
+	bit_crushed,
+]
+
+var level_names = [
+	"Cannon Fodder",
+	"Sunny Seas",
+	"Tunisian Trouble",
+	"Evergreen in the Suez",
+	"Dire DARPA",
+	"Greeting from Novo",
+	"Treasures Up Ahead",
+	"X marks the spot",
+	"Almost there!",
+	"Bullet Heaven",
 ]
 
 var chill_music_scene = preload("res://objects/sounds/calm_background_music.tscn")
@@ -89,6 +114,16 @@ func construct_enemies():
 	var new_music = level_music[level].instantiate()
 	new_music.name = "Music"
 	get_parent().call_deferred("add_child", new_music)
+	
+	var level_name = ""
+	if level >= level_names.size():
+		level_name = "Bullet Heaven"
+		for i in level - 9:
+			level_name + "+"
+	else:
+		level_name = level_names[level]
+	
+	(get_node("../LevelName/LevelText") as RichTextLabel).text = "Level %d: %s" % [level + 1, level_name]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

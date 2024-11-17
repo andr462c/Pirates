@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0j3gxfijvxtb"]
+
+[ext_resource type="AudioStream" uid="uid://bq1r7jhyta3a" path="res://assets/sound_files/Sea shanty 8-bit.wav" id="1_bciw1"]
+
+[node name="SeaShanty8Bit" type="AudioStreamPlayer"]
+stream = ExtResource("1_bciw1")
+autoplay = true

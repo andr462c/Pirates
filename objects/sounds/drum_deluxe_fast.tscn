@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgj1gq3bqpsgq"]
+
+[ext_resource type="AudioStream" uid="uid://dos472qnwaboq" path="res://assets/sound_files/DrumDeluxeFast.wav" id="1_ldjqi"]
+
+[node name="DrumDeluxeFast" type="AudioStreamPlayer"]
+stream = ExtResource("1_ldjqi")
+autoplay = true

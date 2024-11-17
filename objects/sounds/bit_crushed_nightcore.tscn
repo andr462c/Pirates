@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmvev2em8rmqr"]
+
+[ext_resource type="AudioStream" uid="uid://caty6ohr0mopi" path="res://assets/sound_files/BitCrushedNightcorePirateWithASingleLeg.mp3" id="1_c8pkh"]
+
+[node name="BitCrushedNightcore" type="AudioStreamPlayer"]
+stream = ExtResource("1_c8pkh")
+autoplay = true

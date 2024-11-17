@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ghb2d3imthwd"]
+
+[ext_resource type="AudioStream" uid="uid://bgr5pnqt35w8l" path="res://assets/sound_files/ShakyChiptunePirate.mp3" id="1_4ki8u"]
+
+[node name="ShakyChipTune" type="AudioStreamPlayer"]
+stream = ExtResource("1_4ki8u")
+autoplay = true

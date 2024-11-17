@@ -16,6 +16,13 @@
 script = ExtResource("3_ypdg7")
 
 [node name="CardSelectionWater" parent="." instance=ExtResource("4_r371k")]
-position = Vector2(150, 201)
+position = Vector2(433, 383)
 
 [node name="Healthbars" parent="." instance=ExtResource("5_74axc")]
+
+[node name="LevelName" type="CanvasLayer" parent="."]
+
+[node name="LevelText" type="RichTextLabel" parent="LevelName"]
+offset_right = 207.0
+offset_bottom = 40.0
+text = "tmp level"

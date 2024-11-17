@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmeldcmou7ef0"]
+
+[ext_resource type="AudioStream" uid="uid://d1pjlwc7rarxn" path="res://assets/sound_files/AggresiveDrumsAndHarmony.mp3" id="1_o0eyq"]
+
+[node name="AggressiveDrums" type="AudioStreamPlayer"]
+stream = ExtResource("1_o0eyq")
+autoplay = true

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7g7274dyrejq"]
+
+[ext_resource type="AudioStream" uid="uid://dw0e5ygweiu4b" path="res://assets/sound_files/HesARetroSomaliPirate.mp3" id="1_3goyd"]
+
+[node name="HesASomaliPirate" type="AudioStreamPlayer"]
+stream = ExtResource("1_3goyd")
+autoplay = true
