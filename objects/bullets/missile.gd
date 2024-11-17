@@ -15,6 +15,15 @@ func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_w
 	speed =	 _speed	
 	direction = _direction
 	sprite = $Sprite2D
+	var isplayerbullet = false
+	for coll in dont_collide_with:
+		if coll.name == "P0" or coll.name == "P1":
+			isplayerbullet = true
+	if not isplayerbullet:
+		var n = dont_collide_with[0]
+		while n.get_parent() != null:
+			n = n.get_parent()
+		dont_collide_with.append_array(Utils.get_all_enemy_stuff(n))
 	Utils.add_collisions_ignore(self, dont_collide_with)
 	kill_timer = _kill_timer
 	bullet_pattern = _bullet_pattern

@@ -116,6 +116,7 @@ func next_level():
 	for player in players.get_children():
 		player.health = player.max_health
 		player.get_healthbar().value = player.health
+		print("health ", player.health, " maxhealth ", player.max_health)
 		player.immortal = false
 	won = false
 
