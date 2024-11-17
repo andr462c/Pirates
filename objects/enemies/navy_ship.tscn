@@ -30,18 +30,21 @@ rotation = 1.5708
 position = Vector2(-52, -24)
 speed = 2500
 shooting_timeout = 2.0
+kill_time = 10
 number_of_bullets = 8
 
 [node name="Turret2" parent="Weapons" instance=ExtResource("3_xrs7y")]
 position = Vector2(24, 0)
 speed = 2500
 shooting_timeout = 2.0
+kill_time = 10
 number_of_bullets = 8
 
 [node name="Turret3" parent="Weapons" instance=ExtResource("3_xrs7y")]
 position = Vector2(-51, 25)
 speed = 2500
 shooting_timeout = 2.0
+kill_time = 10
 number_of_bullets = 8
 
 [node name="SpriteModulator" parent="." instance=ExtResource("4_0fgxv")]
