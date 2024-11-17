@@ -24,6 +24,8 @@ var air_strikes_in_wave = 5
 var strikes_in_cur_wave = 0
 var airstrike = preload("res://objects/weapons/airstrike.tscn")
 var turrets: Array[Node2D] = []
+var death_sound = preload("res://objects/sounds/warship_killed_sound.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,6 +69,7 @@ func take_damage(damage: float):
 	sprite_modulator.modulate(sprite)
 	get_node("/root/Main/Healthbars/EnemyHealth").value -= max(damage, 0)
 	if health <= 0:
+		get_tree().root.add_child(death_sound.instantiate())
 		queue_free()
 
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs8q1mtat48b5"]
+
+[ext_resource type="AudioStream" uid="uid://v1h6or6p8s38" path="res://assets/sound_files/BigEnemyWarshipkilled.wav" id="1_urpt6"]
+
+[node name="WarshipKilledSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_urpt6")
+autoplay = true
