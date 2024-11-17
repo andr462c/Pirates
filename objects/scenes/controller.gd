@@ -116,13 +116,14 @@ func _ready() -> void:
 
 func next_level():
 	level += 1
-	construct_enemies()
 	for player in players.get_children():
 		player.health = player.max_health
+		player.get_healthbar().max_value = player.max_health
 		player.get_healthbar().value = player.health
 		print("health ", player.health, " maxhealth ", player.max_health)
 		player.immortal = false
 	won = false
+	construct_enemies()
 
 func construct_enemies():
 	var enemies = []
