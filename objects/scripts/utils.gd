@@ -24,6 +24,17 @@ static func get_parents(node: Node) -> Array:
 		cur = p
 	return res
 
+static func get_all_enemy_stuff(root: Node) -> Array:
+	var res = []
+	var enemies = find_child(root, "Enemies")
+	for c in enemies.get_children():
+		get_tree_of_node(c, res)
+	return res
+
+static func get_tree_of_node(node: Node, res: Array):
+	res.append(node)
+	for c in node.get_children():
+		get_tree_of_node(c, res)
 
 static func find_child(node: Node, name: String) -> Node:
 	if node.name == name:
