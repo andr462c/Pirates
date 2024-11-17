@@ -80,10 +80,10 @@ var text_paths = {
 	"AkUpgrade": load("res://assets/cards/ak47.png"),
 	"RpgUpgrade": load("res://assets/cards/rpg card.png"),
 	"TurretUpgrade": load("res://assets/cards/turret.png"),
-	"Healthbuff": load("res://assets/cards/ak47.png"),
-	"BiggerStronger": load("res://assets/cards/ak47.png"),
-	"JumpBoost": load("res://assets/cards/ak47.png"),
-	"Knockback": load("res://assets/cards/ak47.png"),
+	"Healthbuff": load("res://assets/cards/hp.png"),
+	"BiggerStronger": load("res://assets/cards/bigstrong.png"),
+	"JumpBoost": load("res://assets/cards/jump.png"),
+	"Knockback": load("res://assets/cards/knockback.png"),
 }
 
 var won = false
