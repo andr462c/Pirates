@@ -4,6 +4,8 @@ var explosion_scene = preload("res://objects/bullets/explosion.tscn")
 
 @export
 var speed = 400
+@export
+var damage = 50
 var move_delta
 
 var target
@@ -33,6 +35,7 @@ func _process(delta: float) -> void:
 func drop_bomb():
 	bomb_dropped = true
 	var explosion = explosion_scene.instantiate()
+	explosion.damage = damage
 	explosion.position = target
 	explosion.scale *= 2
 	explosion.add_child(bomb_sound.instantiate())

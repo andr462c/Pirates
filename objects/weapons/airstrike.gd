@@ -13,14 +13,19 @@ var player_boat
 var total_time = timer.wait_time
 
 var dropped_bomb = false
-
+var players: Array[Node] = []
 var plane
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_boat = get_node("/root/Main/Playerboat");
-	var player_position = player_boat.position
-	var noise = Vector2(randf_range(-50, 50), randf_range(-50, 50))
+	players = Utils.find_child(get_tree().root, "Players").get_children()
+	if len(players) == 0:
+		return
+	var idx = randi_range(0, len(players)-1)
+	var player = players[idx]
+	var player_position = player.global_position
+	var spread = 100.
+	var noise = Vector2(randf_range(-spread, spread), randf_range(-spread, spread))
 	marker.position = player_position + noise
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

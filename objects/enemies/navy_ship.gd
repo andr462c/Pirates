@@ -11,10 +11,34 @@ var sprite_modulator = $SpriteModulator
 @export
 var health = 1000
 @onready var hit_sound = $HeavyHitSound
+@onready
+var air_strike_wave_timer = $AirStrikeWaveTimer
+@onready
+var single_air_strike_timer = $SingleAirStrikeTimer
+@export
+var air_strike_wave_delay = 10
+@export
+var single_air_strike_delay = 0.25
+@export
+var air_strikes_in_wave = 5
+var strikes_in_cur_wave = 0
+var airstrike = preload("res://objects/weapons/airstrike.tscn")
+var turrets: Array[Node2D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	weapons = Utils.GetWeapons(self)
+	air_strike_wave_timer.start(air_strike_wave_delay)
+	for w in weapons:
+		if w.is_in_group("Turret"):
+			turrets.append(w)
+	for i in range(len(turrets)):
+		var t = turrets[i]
+		var timer: Timer = t.reload_timer
+		var offset_fraction = i / float(len(turrets))
+		timer.stop()
+		timer.start(timer.wait_time * offset_fraction)
+		t.can_shoot = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,3 +66,17 @@ func take_damage(damage: float):
 	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		queue_free()
+
+
+func _start_air_strike_wave():
+	air_strike_wave_timer.stop()
+	single_air_strike_timer.start(single_air_strike_delay)
+
+func _air_strike():
+	strikes_in_cur_wave += 1
+	print("AIR STRIKE ", strikes_in_cur_wave)
+	get_tree().root.add_child(airstrike.instantiate())
+	if strikes_in_cur_wave == air_strikes_in_wave:
+		strikes_in_cur_wave = 0
+		single_air_strike_timer.stop()
+		air_strike_wave_timer.start(air_strike_wave_delay)
