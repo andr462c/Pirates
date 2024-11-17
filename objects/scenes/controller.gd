@@ -6,6 +6,7 @@ var navy = preload("res://objects/enemies/navy_ship.tscn")
 
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
+@export var healthadder = 4
 @export var level_enemies = [
 	[fishboat],
 	[fishboat, fishboat],
@@ -74,6 +75,8 @@ func construct_enemies():
 	for enemy in enemies:
 		counter+=1
 		var instance: Node2D = enemy.instantiate()
+		# add bufs
+		instance.health *= 1+healthadder * level
 		instance.global_position = Vector2(800, 600*(counter/len(enemies)))
 		enemy_node.add_child(instance)
 		hp_sum += instance.health

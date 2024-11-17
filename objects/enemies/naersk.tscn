@@ -1,16 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://c86xy4w00j3ca"]
+[gd_scene load_steps=12 format=3 uid="uid://cfdu7fbrsgix8"]
 
 [ext_resource type="Texture2D" uid="uid://cug7w8827csr8" path="res://assets/boat/naersk.png" id="1_bfw2s"]
 [ext_resource type="Script" path="res://objects/enemies/naersk.gd" id="1_lyx4e"]
 [ext_resource type="PackedScene" uid="uid://doqs7cw0jqufe" path="res://objects/people/fisherman.tscn" id="2_i21a1"]
-[ext_resource type="PackedScene" path="res://objects/enemies/spinshooter.tscn" id="2_ncvn5"]
-[ext_resource type="PackedScene" uid="uid://hiujdurwl4pj" path="res://objects/weapons/shotgun.tscn" id="3_mtay0"]
+[ext_resource type="PackedScene" uid="uid://dpudv758nxkv0" path="res://objects/enemies/spinshooter.tscn" id="2_ncvn5"]
+[ext_resource type="PackedScene" path="res://objects/weapons/shotgun.tscn" id="3_mtay0"]
 [ext_resource type="PackedScene" uid="uid://4neu08f3rg8r" path="res://objects/bullets/bullet_patterns/bullet_pattern1_stopNgo.tscn" id="4_4t048"]
 [ext_resource type="PackedScene" uid="uid://c4a2mt7n17ypa" path="res://objects/bullets/bullet_patterns/bullet_pattern3_Sine.tscn" id="5_xshiw"]
 [ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="7_debkm"]
 [ext_resource type="Script" path="res://objects/enemies/container_shooter.gd" id="8_50ntm"]
 [ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="10_77emx"]
-[ext_resource type="PackedScene" uid="uid://ckxgxr575whlp" path="res://objects/sounds/nearsk_hit_sound.tscn" id="11_8ms7s"]
+[ext_resource type="PackedScene" path="res://objects/sounds/nearsk_hit_sound.tscn" id="11_8ms7s"]
 
 [node name="Naersk" type="RigidBody2D"]
 mass = 10000.0
