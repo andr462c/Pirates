@@ -28,7 +28,7 @@ func show_cards():
 	selected[0] = false
 	selected[1] = false
 	p1 = get_node("/root/Main/Controller/Players/P0")
-	if has_node("root/Main/Controller/Players/P1"):
+	if has_node("/root/Main/Controller/Players/P1"):
 		p2 = get_node("/root/Main/Controller/Players/P1")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

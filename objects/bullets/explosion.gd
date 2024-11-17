@@ -1,6 +1,6 @@
 extends Node2D
 
-var bomb_strength = 2000
+var bomb_strength = 1500
 var damage_radius
 var knockback_radius
 @export

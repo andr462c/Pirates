@@ -69,11 +69,10 @@ var level_names = [
 var chill_music_scene = preload("res://objects/sounds/calm_background_music.tscn")
 
 var cards = [
-	movement_speed,
 	ak_up,
+	bigger_stronger,
 	rpg_up,
 	knockback_up,
-	bigger_stronger,
 	healthbuf,
 	jumpboost
 ]	
@@ -115,6 +114,7 @@ func _ready() -> void:
 	set_orig_healthbar()
 
 func next_level():
+	revive_players()
 	level += 1
 	for player in players.get_children():
 		player.health = player.max_health

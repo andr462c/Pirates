@@ -5,7 +5,7 @@ func modify_player(player: PlayerBoat) -> void:
 		var turret = player.get_node("Weapons").get_node("Rpg")
 		turret.shooting_timeout *= 0.8
 		turret.kill_time += 2
-		turret.speed += 500
+		turret.speed += 1000
 	else:
 		var turret = preload("res://objects/weapons/rpg.tscn").instantiate()
 		player.get_node("Weapons").add_child(turret)

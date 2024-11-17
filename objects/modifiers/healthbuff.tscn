@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn1w4ndsqur1g"]
+[gd_scene load_steps=2 format=3 uid="uid://dli2woe36q4iu"]
 
 [ext_resource type="Script" path="res://objects/modifiers/healthbuff.gd" id="1_1vhpv"]
 

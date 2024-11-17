@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7y3wycwnie7d"]
+[gd_scene load_steps=9 format=3 uid="uid://b7y3wycwnie7d"]
 
 [ext_resource type="Script" path="res://objects/playerboat.gd" id="1_nphoy"]
 [ext_resource type="Texture2D" uid="uid://d4ixbobcprqbj" path="res://assets/boat/rubberboat.png" id="2_0x2yp"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://duff7yvs2avtb" path="res://assets/people/ak.png" id="5_h18fo"]
 [ext_resource type="PackedScene" uid="uid://daqwihar2pbyj" path="res://objects/sounds/jump_sound.tscn" id="5_q3q1q"]
 [ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="8_xilfc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qgfhq"]
-radius = 8.51469
 
 [node name="Playerboat" type="RigidBody2D"]
 z_index = 100
@@ -22,8 +19,8 @@ linear_damp = 10.0
 script = ExtResource("1_nphoy")
 health = 30
 
-[node name="CollisionShapeWater" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qgfhq")
+[node name="CollisionShapeWater" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -11, -5, -8, -7, -3, -7, 10, -6, 11, -3, 9, 4, 9, 5, 11, 7, 11, 7, 10, 7, -5, 3, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0x2yp")
