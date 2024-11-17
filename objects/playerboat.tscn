@@ -20,7 +20,7 @@ mass = 150.0
 gravity_scale = 0.0
 linear_damp = 10.0
 script = ExtResource("1_nphoy")
-health = 1000
+health = 30
 
 [node name="CollisionShapeWater" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qgfhq")

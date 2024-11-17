@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var enemy_movement = $EnemyMovement
-@export var health = 10
+@export var health = 35
 @onready var sprite = $Sprite2D
 @onready var sprite_modulator = $SpriteModulator
 @onready var hit_sound = $WoodHitSound

@@ -16,15 +16,16 @@ shader_parameter/WATER2_COL = Vector4(0.513726, 0.635294, 0.776471, 1)
 shader_parameter/FOAM_COL = Vector4(0.784314, 0.792157, 0.870588, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fki35"]
-size = Vector2(19.7995, 1.4)
+size = Vector2(19.7995, 7.4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d20tb"]
-size = Vector2(2420, 99)
+size = Vector2(2420, 771.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikntb"]
+size = Vector2(265.589, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8v1l"]
-size = Vector2(20, 1161)
+size = Vector2(353.056, 1161)
 
 [node name="Background" type="Node2D"]
 z_index = -100
@@ -40,7 +41,7 @@ scale = Vector2(100, 100)
 [node name="StaticBody2D" type="StaticBody2D" parent="TopWall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall/StaticBody2D"]
-position = Vector2(5.03, -0.72)
+position = Vector2(5.03, -3.72)
 scale = Vector2(1.247, 1)
 shape = SubResource("RectangleShape2D_fki35")
 
@@ -49,7 +50,7 @@ shape = SubResource("RectangleShape2D_fki35")
 [node name="StaticBody2D" type="StaticBody2D" parent="BottomWall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D"]
-position = Vector2(537, 848)
+position = Vector2(537, 1184.25)
 scale = Vector2(0.996967, 1)
 shape = SubResource("RectangleShape2D_d20tb")
 
@@ -58,7 +59,7 @@ shape = SubResource("RectangleShape2D_d20tb")
 [node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
-position = Vector2(-45, 280)
+position = Vector2(-606.151, 280)
 scale = Vector2(4.56983, 67.0691)
 shape = SubResource("RectangleShape2D_ikntb")
 
@@ -67,6 +68,6 @@ shape = SubResource("RectangleShape2D_ikntb")
 [node name="StaticBody2D" type="StaticBody2D" parent="RightWall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
-position = Vector2(1236, 350)
+position = Vector2(1835.5, 350)
 scale = Vector2(3.6, 1)
 shape = SubResource("RectangleShape2D_n8v1l")

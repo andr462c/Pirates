@@ -9,7 +9,7 @@ var sprite = $Sprite2D
 @onready
 var sprite_modulator = $SpriteModulator
 @export
-var health = 500
+var health = 250
 @onready var hit_sound = $HeavyHitSound
 @onready
 var air_strike_wave_timer = $AirStrikeWaveTimer

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b28hcm85svb7t"]
+[gd_scene load_steps=8 format=3 uid="uid://bpuyyprgy2euv"]
 
+[ext_resource type="Script" path="res://objects/scenes/main.gd" id="1_qk2t8"]
 [ext_resource type="PackedScene" uid="uid://c80ewlusa1n44" path="res://objects/background.tscn" id="1_xbi6t"]
 [ext_resource type="PackedScene" uid="uid://uwpeen6i7ycy" path="res://objects/env_controler.tscn" id="2_v1eht"]
 [ext_resource type="Script" path="res://objects/scenes/controller.gd" id="3_ypdg7"]
@@ -8,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dm6xiw3ikqtyo" path="res://assets/m5x7.ttf" id="6_0fn8a"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_qk2t8")
 
 [node name="Background" parent="." instance=ExtResource("1_xbi6t")]
 

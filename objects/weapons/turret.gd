@@ -32,8 +32,8 @@ func shoot():
 	for i in number_of_bullets:
 		var real_direction = shoot_direction.rotated(offset)
 		var bullet = bullet_scene.instantiate()
-		bullet.init(global_position, speed, real_direction,Utils.get_all_enemy_stuff(get_tree().root), damage, kill_time, pattern.instantiate())
-		get_tree().root.add_child(bullet)
+		bullet.init(global_position, speed, real_direction, Utils.get_parents(self), damage, kill_time, pattern.instantiate())
+		get_tree().root.get_child(0).add_child(bullet)
 		offset += delta
 	reload_timer.start(shooting_timeout)	
 

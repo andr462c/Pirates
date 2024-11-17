@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgmmp0lw7m84j"]
+[gd_scene load_steps=10 format=3 uid="uid://48wpsxjoceog"]
 
 [ext_resource type="Script" path="res://objects/enemies/navy_ship.gd" id="1_x1i2n"]
 [ext_resource type="Texture2D" uid="uid://d06c65sb06ytr" path="res://assets/boat/navyship.png" id="2_2hvq8"]
-[ext_resource type="PackedScene" uid="uid://c33ytwvk1wybr" path="res://objects/weapons/Turret.tscn" id="3_xrs7y"]
-[ext_resource type="PackedScene" uid="uid://bly38omb7mkvm" path="res://objects/sprite_modulator.tscn" id="4_0fgxv"]
+[ext_resource type="PackedScene" path="res://objects/weapons/Turret.tscn" id="3_xrs7y"]
+[ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="4_0fgxv"]
 [ext_resource type="PackedScene" path="res://objects/enemies/spinshooter.tscn" id="5_3wgon"]
+[ext_resource type="PackedScene" uid="uid://njmg5wgrm7b5" path="res://objects/sounds/heavy_hit_sound.tscn" id="5_20nn1"]
 [ext_resource type="PackedScene" uid="uid://c75bvt1bu8dpu" path="res://objects/weapons/ak47.tscn" id="6_63awu"]
 [ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="7_ekcb4"]
 
@@ -15,7 +16,7 @@ size = Vector2(52, 252)
 rotation = 1.5708
 mass = 100000.0
 script = ExtResource("1_x1i2n")
-air_strike_wave_delay = 7
+air_strike_wave_delay = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -7.10543e-15)
@@ -73,6 +74,8 @@ kill_time = 2.0
 angular_factor = 0.001
 speed = 300000
 points = [Vector2(50, 100), Vector2(1000, 100)]
+
+[node name="HeavyHitSound" parent="." instance=ExtResource("5_20nn1")]
 
 [connection signal="timeout" from="AirStrikeWaveTimer" to="." method="_start_air_strike_wave"]
 [connection signal="timeout" from="SingleAirStrikeTimer" to="." method="_air_strike"]

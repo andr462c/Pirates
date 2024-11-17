@@ -20,7 +20,7 @@ var z = 0.0
 var z_speed = 0
 var colshape: CollisionShape2D
 var weapons = []
-@export var health = 30
+@export var health = 10
 var jumptimer: Timer
 @export var knockback = 10000
 var max_health = health
@@ -36,6 +36,8 @@ var death_sound = preload("res://objects/sounds/player_die.tscn")
 
 @onready
 var sprite_modulator = $SpriteModulator
+
+var immortal = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,8 +86,8 @@ func _physics_process(delta):
 	# if speed.length() > max_speed:
 	# 	speed = speed.limit_length(max_speed)
 	# position += speed
-	if Input.is_action_just_pressed("ui_accept"):
-		preload("res://objects/modifiers/ak_upgrade.tscn").instantiate().modify_player(self)
+	#if Input.is_action_just_pressed("ui_accept"):
+	#	preload("res://objects/modifiers/ak_upgrade.tscn").instantiate().modify_player(self)
 	if Input.is_action_pressed("key_jump_%d" % id) and not jumping and jumptimer.is_stopped():	
 		jump_sound.play()
 		jumping = true
@@ -114,13 +116,19 @@ func shoot():
 	weapons = Utils.GetWeapons(self)
 	for weapon in weapons:
 		weapon.update_stats(self)
+		var tmp_dmg = weapon.damage
 		weapon.damage *= damage_multiplier
-		weapon.shoot()	
+		weapon.shoot()
+		weapon.damage = tmp_dmg
 
 func get_healthbar():
 	return get_node("/root/Main/Healthbars/P%dHealth" % id)
 
 func take_damage(damage: float):
+	if immortal:
+		return
+		
+	print("My health: %d" % health)
 	health -= damage
 	get_healthbar().value = health
 	if !hit_sound.playing:
@@ -128,5 +136,7 @@ func take_damage(damage: float):
 	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		get_tree().root.add_child(death_sound.instantiate())
-		queue_free()
+		get_node("/root/Main/Controller").dead_player = self
+		get_parent().remove_child(self)
+		set_process(false)
 	

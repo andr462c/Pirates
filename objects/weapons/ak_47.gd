@@ -32,8 +32,8 @@ func shoot():
 		return
 	can_shoot=false
 	var bullet = bullet_scene.instantiate()
-	bullet.init(global_position, speed, shoot_direction, Utils.get_all_enemy_stuff(get_tree().root), damage, kill_time, pattern.instantiate())
-	get_tree().root.add_child(bullet)
+	bullet.init(global_position, speed, shoot_direction, Utils.get_parents(self), damage, kill_time, pattern.instantiate())
+	get_tree().root.get_child(0).add_child(bullet)
 	reload_timer.start(shooting_timeout)	
 
 func _on_reload_timeout():

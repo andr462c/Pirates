@@ -9,7 +9,8 @@ var switch_sound = $UiSwitchSound
 @onready
 var outline = $Card1/Outline
 
-var player
+var player1
+var player2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +25,14 @@ func show_cards():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		confirm_selection()
+	if Input.is_action_just_pressed("key_select_0"):
+		if player1 == null:
+			player1 = get_node("/root/Main/Controller/Players/P0")
+		confirm_selection(player1)
+	elif Input.is_action_just_pressed("key_select_1"):
+		if player2 == null:
+			player2 = get_node("/root/Main/Controller/Players/P1")
+		confirm_selection(player2)
 
 
 func _card1_entered(body: Node2D) -> void:
@@ -35,7 +42,10 @@ func _card1_entered(body: Node2D) -> void:
 	$Card1/Outline.visible = false
 	$Card2/Outline.visible = false
 	$Card3/Outline.visible = false
-	player = body
+	if body.id == 0:
+		player1 = body
+	else:
+		player2 = body
 	
 
 func _card2_entered(body: Node2D) -> void:
@@ -45,7 +55,10 @@ func _card2_entered(body: Node2D) -> void:
 	$Card1/Outline.visible = false
 	$Card2/Outline.visible = false
 	$Card3/Outline.visible = false
-	player = body
+	if body.id == 0:
+		player1 = body
+	else:
+		player2 = body
 
 
 func _card3_entered(body: Node2D) -> void:
@@ -55,7 +68,10 @@ func _card3_entered(body: Node2D) -> void:
 	$Card1/Outline.visible = false
 	$Card2/Outline.visible = false
 	$Card3/Outline.visible = false
-	player = body
+	if body.id == 0:
+		player1 = body
+	else:
+		player2 = body
 
 
 func _card_left(bodt: Node2D) -> void:
@@ -64,7 +80,7 @@ func _card_left(bodt: Node2D) -> void:
 var selected = 0
 var player_who_selected
 
-func confirm_selection():
+func confirm_selection(player: PlayerBoat):
 	if item_index == -1 || visible == false:
 		return
 	
@@ -85,9 +101,9 @@ func confirm_selection():
 		return
 		
 	for child in get_children():
-		child.visible = true
 		if !child.name.contains("Card"):
 			continue
+		child.visible = true
 		child.get_node("Modifier").queue_free()
 	visible = false
 	$Card1/Area2D.monitoring = false

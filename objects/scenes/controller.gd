@@ -22,6 +22,8 @@ var bigger_stronger = preload("res://objects/modifiers/bigger_stronger.tscn")
 var healthbuf = preload("res://objects/modifiers/healthbuff.tscn")
 var jumpboost = preload("res://objects/modifiers/jumpboost.tscn")
 
+var dead_player
+
 
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var healthadder = 0.2
@@ -86,8 +88,12 @@ func _ready() -> void:
 	var offset = Vector2(100, 0)
 	for id in Input.get_connected_joypads():
 		var player = player_class.instantiate()
+		player.name = "P%d" % id;
 		player.global_position = Vector2(200, 200) + id * offset
 		player.id = id
+		var blue_boat = preload("res://assets/boat/rubberboat_blue.png")
+		if player.id == 1:
+			player.get_node("Sprite2D").texture = blue_boat
 		players.add_child(player)
 		var health_path = "../Healthbars/P{id}Health".format({"id": id})
 		var bar = get_node(health_path) as TextureProgressBar
@@ -110,6 +116,7 @@ func next_level():
 	for player in players.get_children():
 		player.health = player.max_health
 		player.get_healthbar().value = player.health
+		player.immortal = false
 	won = false
 
 func construct_enemies():
@@ -137,10 +144,13 @@ func construct_enemies():
 		hp_sum += instance.health
 	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).max_value = hp_sum
 	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).value = hp_sum
+	var hp_size_scaling = hp_sum/5
+	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).size.x += hp_size_scaling
+	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).position.x -= hp_size_scaling/2
 	
 	if has_node("../Music"):
 		get_node("../Music").queue_free()
-	var new_music = level_music[level].instantiate()
+	var new_music = level_music[level % len(level_music)].instantiate()
 	new_music.name = "Music"
 	get_parent().call_deferred("add_child", new_music)
 	
@@ -158,6 +168,9 @@ func construct_enemies():
 func _process(delta: float) -> void:
 	var enemies_node = $Enemies
 	if !won && enemies_node.get_child_count() == 0:
+		revive_players()
+		for player in players.get_children():
+			player.immortal = true
 		won = true
 		play_chill_music()
 		add_random_cards()
@@ -185,3 +198,8 @@ func play_chill_music():
 	var new_music = chill_music_scene.instantiate()
 	new_music.name = "ChillMusic"
 	get_parent().call_deferred("add_child", new_music)
+	
+func revive_players():
+	if dead_player != null:
+		players.add_child(dead_player)
+		dead_player = null
