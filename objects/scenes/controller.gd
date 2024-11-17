@@ -12,6 +12,14 @@ var hes_a_somali_pirate = preload("res://objects/sounds/hes_a_somali_pirate.tscn
 var aggresive_drums = preload("res://objects/sounds/aggressive_drums.tscn")
 var complete_overdrive = preload("res://objects/sounds/complete_overdrive.tscn")
 
+
+var movement_speed = preload("res://objects/modifiers/movement_speed_increase.tscn")
+var ak_up = preload("res://objects/modifiers/ak_upgrade.tscn")
+var rpg_up = preload("res://objects/modifiers/rpg_upgrade.tscn")
+var turret_up = preload("res://objects/modifiers/turret_upgrade.tscn")
+var knockback_up = preload("res://objects/modifiers/knockback.tscn")
+
+
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
 @export var healthadder = 0.2
@@ -55,11 +63,10 @@ var level_names = [
 var chill_music_scene = preload("res://objects/sounds/calm_background_music.tscn")
 
 var cards = [
-	preload("res://objects/modifiers/movement_speed_increase.tscn"),
-	preload("res://objects/modifiers/ak_upgrade.tscn"),
-	preload("res://objects/modifiers/rpg_upgrade.tscn"),
-	preload("res://objects/modifiers/turret_upgrade.tscn"),
-	preload("res://objects/modifiers/knockback.tscn")
+	movement_speed,
+	ak_up,
+	rpg_up,
+	knockback_up,
 ]
 
 var won = false
@@ -80,6 +87,7 @@ func _ready() -> void:
 		print("health_path ", health_path, " ", bar)
 		bar.max_value = player.health
 		bar.value = player.health
+		bar.visible = true
 	add_child(players)
 	
 	var enemies = Node2D.new()
@@ -142,7 +150,11 @@ func _process(delta: float) -> void:
 		add_random_cards()
 		card_selection.show_cards()
 		
+var added_turret = false
 func add_random_cards():
+	if level > 4 && !added_turret:
+		cards.append(turret_up)
+		added_turret = true
 	cards.shuffle()
 	var index = 0
 	for child in card_selection.get_children():

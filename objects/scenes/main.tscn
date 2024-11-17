@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpuyyprgy2euv"]
+[gd_scene load_steps=7 format=3 uid="uid://bpuyyprgy2euv"]
 
 [ext_resource type="PackedScene" uid="uid://c80ewlusa1n44" path="res://objects/background.tscn" id="1_xbi6t"]
 [ext_resource type="PackedScene" path="res://objects/env_controler.tscn" id="2_v1eht"]
 [ext_resource type="Script" path="res://objects/scenes/controller.gd" id="3_ypdg7"]
 [ext_resource type="PackedScene" uid="uid://dgbv0cnuwksl" path="res://objects/scenes/card_selection_water.tscn" id="4_r371k"]
 [ext_resource type="PackedScene" uid="uid://b082pjfvj01g5" path="res://objects/scenes/healthbar.tscn" id="5_74axc"]
+[ext_resource type="FontFile" uid="uid://dm6xiw3ikqtyo" path="res://assets/m5x7.ttf" id="6_0fn8a"]
 
 [node name="Main" type="Node2D"]
 
@@ -23,6 +24,10 @@ position = Vector2(433, 383)
 [node name="LevelName" type="CanvasLayer" parent="."]
 
 [node name="LevelText" type="RichTextLabel" parent="LevelName"]
-offset_right = 207.0
-offset_bottom = 40.0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 307.0
+offset_bottom = 41.0
+theme_override_fonts/normal_font = ExtResource("6_0fn8a")
+theme_override_font_sizes/normal_font_size = 16
 text = "tmp level"

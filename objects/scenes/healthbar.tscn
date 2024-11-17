@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx0rp8y33fejj"]
+[gd_scene load_steps=4 format=3 uid="uid://b082pjfvj01g5"]
 
 [ext_resource type="Texture2D" uid="uid://og2346dwsh1s" path="res://assets/cards/hpunder.png" id="1_w2iw7"]
 [ext_resource type="Script" path="res://objects/scenes/texture_progress_bar.gd" id="2_m10dm"]
@@ -22,6 +22,7 @@ texture_progress = ExtResource("2_wym1w")
 script = ExtResource("2_m10dm")
 
 [node name="P0Health" type="TextureProgressBar" parent="."]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -35,6 +36,7 @@ texture_progress = ExtResource("2_wym1w")
 script = ExtResource("2_m10dm")
 
 [node name="P1Health" type="TextureProgressBar" parent="."]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
