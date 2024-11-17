@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://48wpsxjoceog"]
+[gd_scene load_steps=9 format=3 uid="uid://bgmmp0lw7m84j"]
 
 [ext_resource type="Script" path="res://objects/enemies/navy_ship.gd" id="1_x1i2n"]
 [ext_resource type="Texture2D" uid="uid://d06c65sb06ytr" path="res://assets/boat/navyship.png" id="2_2hvq8"]
-[ext_resource type="PackedScene" path="res://objects/weapons/Turret.tscn" id="3_xrs7y"]
-[ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="4_0fgxv"]
-[ext_resource type="PackedScene" uid="uid://njmg5wgrm7b5" path="res://objects/sounds/heavy_hit_sound.tscn" id="5_20nn1"]
+[ext_resource type="PackedScene" uid="uid://c33ytwvk1wybr" path="res://objects/weapons/Turret.tscn" id="3_xrs7y"]
+[ext_resource type="PackedScene" uid="uid://bly38omb7mkvm" path="res://objects/sprite_modulator.tscn" id="4_0fgxv"]
+[ext_resource type="PackedScene" path="res://objects/enemies/spinshooter.tscn" id="5_3wgon"]
+[ext_resource type="PackedScene" uid="uid://c75bvt1bu8dpu" path="res://objects/weapons/ak47.tscn" id="6_63awu"]
+[ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="7_ekcb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kl4f"]
 size = Vector2(52, 252)
@@ -26,13 +28,47 @@ rotation = 1.5708
 
 [node name="Turret" parent="Weapons" instance=ExtResource("3_xrs7y")]
 position = Vector2(-52, -24)
+speed = 2500
+shooting_timeout = 2.0
+number_of_bullets = 8
 
 [node name="Turret2" parent="Weapons" instance=ExtResource("3_xrs7y")]
 position = Vector2(24, 0)
+speed = 2500
+shooting_timeout = 2.0
+number_of_bullets = 8
 
 [node name="Turret3" parent="Weapons" instance=ExtResource("3_xrs7y")]
 position = Vector2(-51, 25)
+speed = 2500
+shooting_timeout = 2.0
+number_of_bullets = 8
 
 [node name="SpriteModulator" parent="." instance=ExtResource("4_0fgxv")]
 
-[node name="HeavyHitSound" parent="." instance=ExtResource("5_20nn1")]
+[node name="AirStrikeWaveTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SingleAirStrikeTimer" type="Timer" parent="."]
+
+[node name="spinshooter1" parent="." instance=ExtResource("5_3wgon")]
+
+[node name="Ak47" parent="spinshooter1" instance=ExtResource("6_63awu")]
+shooting_timeout = 0.2
+kill_time = 2.0
+
+[node name="spinshooter" parent="." instance=ExtResource("5_3wgon")]
+start_offset = 0.5
+
+[node name="Ak47" parent="spinshooter" instance=ExtResource("6_63awu")]
+shooting_timeout = 0.2
+kill_time = 2.0
+
+[node name="EnemyBase" parent="." instance=ExtResource("7_ekcb4")]
+angular_factor = 0.001
+speed = 300000
+points = [Vector2(50, 100), Vector2(1000, 100)]
+
+[connection signal="timeout" from="AirStrikeWaveTimer" to="." method="_start_air_strike_wave"]
+[connection signal="timeout" from="SingleAirStrikeTimer" to="." method="_air_strike"]

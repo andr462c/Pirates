@@ -1,13 +1,21 @@
 extends Node2D
 
+var fishboat = preload("res://objects/enemies/fishing_boat.tscn")
+var naersk = preload("res://objects/enemies/naersk.tscn")
+var navy = preload("res://objects/enemies/navy_ship.tscn")
+
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
 @export var level_enemies = [
-	[preload("res://objects/enemies/fishing_boat.tscn")],
-	[preload("res://objects/enemies/naersk.tscn")],
-	[preload("res://objects/enemies/fishing_boat.tscn")],
-	[preload("res://objects/enemies/navy_ship.tscn")],
-	[preload("res://objects/enemies/fishing_boat.tscn"), preload("res://objects/enemies/fishing_boat.tscn")],
+	[fishboat],
+	[fishboat, fishboat],
+	[naersk],
+	[naersk, fishboat],
+	[navy],
+	[fishboat,fishboat,fishboat,fishboat,fishboat],
+	[naersk, naersk],
+	[navy, fishboat, fishboat],
+	[navy, navy]
 ]
 
 var level_music = [
@@ -38,7 +46,7 @@ func _ready() -> void:
 	var offset = Vector2(100, 0)
 	for id in Input.get_connected_joypads():
 		var player = player_class.instantiate()
-		player.global_position = Vector2(300, 200) + id * offset
+		player.global_position = Vector2(200, 200) + id * offset
 		player.id = id
 		players.add_child(player)
 	add_child(players)
@@ -53,13 +61,24 @@ func _ready() -> void:
 	add_child(camera.instantiate())
 
 func construct_enemies():
-	var enemies = level_enemies[level]
+	var enemies = []
+	if level < len(level_enemies):
+		enemies = level_enemies[level]
+	else:
+		for i in range(level/2):
+			enemies.append(fishboat)
+		for i in range(level/6):
+			enemies.append(naersk)
+		for i in range(level/8):
+			enemies.append(naersk)
 	var enemy_node = $Enemies
 	var offset = Vector2(0, 0)
 	var hp_sum = 0
+	var counter = 0.0
 	for enemy in enemies:
+		counter+=1
 		var instance: Node2D = enemy.instantiate()
-		instance.global_position = Vector2(300, 50)
+		instance.global_position = Vector2(800, 600*(counter/len(enemies)))
 		enemy_node.add_child(instance)
 		hp_sum += instance.health
 	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).max_value = hp_sum
