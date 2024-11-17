@@ -13,12 +13,10 @@ var knockback = 0.0
 func init(_position: Vector2, _speed: float, _direction: Vector2, dont_collide_with: Array, _damage: float, _kill_timer: float, _bullet_pattern: BulletPattern):
 	sprite = $Sprite2D
 	for coll in dont_collide_with:
-		print("name ", coll.name)
 		if coll.name == "P1" or coll.name == "P0":
 			knockback = coll.knockback
 			isplayerbullet = true
 			sprite.modulate = Color(0.75, 0, 0, 0.8)
-	print("isplayerbullet ", isplayerbullet)
 	if not isplayerbullet:
 		var n = dont_collide_with[0]
 		while n.get_parent() != null:
