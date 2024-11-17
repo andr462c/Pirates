@@ -30,6 +30,7 @@ z_as_relative = false
 texture = ExtResource("3_lmgsb")
 
 [node name="Desc" type="RichTextLabel" parent="Card1"]
+visible = false
 offset_left = -52.0
 offset_top = -2.0
 offset_right = 50.0
@@ -56,6 +57,7 @@ z_as_relative = false
 texture = ExtResource("3_lmgsb")
 
 [node name="Desc" type="RichTextLabel" parent="Card2"]
+visible = false
 offset_left = -52.0
 offset_top = -2.0
 offset_right = 50.0
@@ -82,6 +84,7 @@ z_as_relative = false
 texture = ExtResource("3_lmgsb")
 
 [node name="Desc" type="RichTextLabel" parent="Card3"]
+visible = false
 offset_left = -52.0
 offset_top = -2.0
 offset_right = 50.0

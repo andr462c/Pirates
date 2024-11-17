@@ -74,7 +74,17 @@ var cards = [
 	knockback_up,
 	healthbuf,
 	jumpboost
-]	
+]
+
+var text_paths = {
+	"AkUpgrade": load("res://assets/cards/ak47.png"),
+	"RpgUpgrade": load("res://assets/cards/rpg card.png"),
+	"TurretUpgrade": load("res://assets/cards/turret.png"),
+	"Healthbuff": load("res://assets/cards/ak47.png"),
+	"BiggerStronger": load("res://assets/cards/ak47.png"),
+	"JumpBoost": load("res://assets/cards/ak47.png"),
+	"Knockback": load("res://assets/cards/ak47.png"),
+}
 
 var won = false
 var enemy_healthbar
@@ -212,7 +222,8 @@ func add_random_cards():
 		var desc = card.name
 		card.name = "Modifier"
 		child.add_child(card)
-		(child.get_node("Desc") as RichTextLabel).text = "[center]%s[/center]" % desc
+		(child.get_node("Sprite2D") as Sprite2D).texture = text_paths[desc]
+		#(child.get_node("Desc") as RichTextLabel).text = "[center]%s[/center]" % desc
 		index += 1
 
 func play_chill_music():
