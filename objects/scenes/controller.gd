@@ -84,7 +84,7 @@ func _ready() -> void:
 	players.name = "Players"
 	var player_class = preload("res://objects/playerboat.tscn")
 	var offset = Vector2(100, 0)
-	for id in [0]:
+	for id in Input.get_connected_joypads():
 		var player = player_class.instantiate()
 		player.global_position = Vector2(200, 200) + id * offset
 		player.id = id
