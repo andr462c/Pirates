@@ -24,7 +24,6 @@ var jumpboost = preload("res://objects/modifiers/jumpboost.tscn")
 
 var dead_player
 
-
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var healthadder = 0.2
 @export var level = -1
@@ -82,10 +81,14 @@ var enemy_healthbar
 var enemy_healthbar_orig_size
 var enemy_healthbar_orig_x
 
+var remember_scene = preload("res://objects/scenes/level_remember.tscn")
+var remember
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	players = Node2D.new()
 	players.name = "Players"
+	remember = remember_scene.instantiate()
 	var player_class = preload("res://objects/playerboat.tscn")
 	var offset = Vector2(100, 0)
 	for id in Input.get_connected_joypads():
@@ -112,10 +115,13 @@ func _ready() -> void:
 	var camera = preload("res://objects/Camera.tscn")
 	add_child(camera.instantiate())
 	set_orig_healthbar()
+	get_tree().root.call_deferred("add_child", remember)
 
 func next_level():
 	revive_players()
 	level += 1
+	var max_level = remember.max_level
+	get_node("/root/Main/MaxLevel/LevelText").text = "[right]Max Level: %d[/right]" % max(max_level, level)
 	for player in players.get_children():
 		player.health = player.max_health
 		player.get_healthbar().max_value = player.max_health
