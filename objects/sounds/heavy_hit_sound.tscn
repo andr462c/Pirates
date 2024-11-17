@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://njmg5wgrm7b5"]
+
+[ext_resource type="AudioStream" uid="uid://nwkot6lrn34k" path="res://assets/sound_files/impactHeavy.ogg" id="1_mewfd"]
+
+[node name="HeavyHitSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_mewfd")

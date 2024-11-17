@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://asger_test_scene.gd" id="1_fe3kn"]
 [ext_resource type="PackedScene" uid="uid://b7y3wycwnie7d" path="res://objects/playerboat.tscn" id="2_50n5g"]
 [ext_resource type="PackedScene" uid="uid://c80ewlusa1n44" path="res://objects/background.tscn" id="3_3yopm"]
-[ext_resource type="PackedScene" uid="uid://bv2crx0t0bsal" path="res://card_selection.tscn" id="4_q287i"]
+[ext_resource type="PackedScene" uid="uid://d0hv4kgjloc1c" path="res://objects/weapons/airstrikespawner.tscn" id="4_6qsl5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fe3kn")
@@ -14,12 +14,4 @@ collision_layer = 1
 
 [node name="Background" parent="." instance=ExtResource("3_3yopm")]
 
-[node name="CardSelection" parent="." instance=ExtResource("4_q287i")]
-offset_right = 600.0
-offset_bottom = 400.0
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Airstrikespawner" parent="." instance=ExtResource("4_6qsl5")]

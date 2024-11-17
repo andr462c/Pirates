@@ -4,3 +4,4 @@
 
 [node name="BombSound" type="AudioStreamPlayer"]
 stream = ExtResource("1_cnrl8")
+autoplay = true

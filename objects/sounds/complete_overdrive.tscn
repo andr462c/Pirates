@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1psa00cgq0"]
+
+[ext_resource type="AudioStream" uid="uid://ce6trc2d7idqn" path="res://assets/sound_files/CompleteOverdrive.mp3" id="1_d82o8"]
+
+[node name="CompleteOverdrive" type="AudioStreamPlayer"]
+stream = ExtResource("1_d82o8")
+autoplay = true

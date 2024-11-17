@@ -81,4 +81,6 @@ func confirm_selection():
 	controller.level += 1
 	controller.construct_enemies()
 	controller.won = false
+	if has_node("../Music"):
+		get_node("../Music").queue_free()
 	

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckxgxr575whlp"]
+
+[ext_resource type="AudioStream" uid="uid://dra125wfclydn" path="res://assets/sound_files/PlayerShootMediumOrPlayerIsHit.ogg" id="1_jtgxo"]
+
+[node name="NearskHitSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_jtgxo")

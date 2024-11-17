@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu1sl1ay27bec"]
+
+[ext_resource type="AudioStream" uid="uid://kwah1u2sghoi" path="res://assets/sound_files/impactWood.ogg" id="1_cbg1l"]
+
+[node name="WoodHitSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_cbg1l")

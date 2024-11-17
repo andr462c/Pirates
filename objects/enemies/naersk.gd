@@ -9,6 +9,9 @@ var sprite_modulator = $SpriteModulator
 @export
 var health = 1000
 
+@onready
+var hit_sound = $NearskHitSound
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,6 +23,7 @@ func _process(delta: float) -> void:
 
 func take_damage(damage: float):
 	health -= damage
+	hit_sound.play()
 	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		queue_free()

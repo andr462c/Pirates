@@ -3,11 +3,22 @@ extends Node2D
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
 @export var level_enemies = [
+	[preload("res://objects/enemies/fishing_boat.tscn")],
 	[preload("res://objects/enemies/naersk.tscn")],
 	[preload("res://objects/enemies/fishing_boat.tscn")],
 	[preload("res://objects/enemies/navy_ship.tscn")],
 	[preload("res://objects/enemies/fishing_boat.tscn"), preload("res://objects/enemies/fishing_boat.tscn")],
 ]
+
+var level_music = [
+	preload("res://objects/sounds/complete_overdrive.tscn"),
+	preload("res://objects/sounds/complete_overdrive.tscn"),
+	preload("res://objects/sounds/complete_overdrive.tscn"),
+	preload("res://objects/sounds/complete_overdrive.tscn"),
+	preload("res://objects/sounds/complete_overdrive.tscn"),
+]
+
+var chill_music_scene = preload("res://objects/sounds/calm_background_music.tscn")
 
 var cards = [
 	preload("res://objects/modifiers/movement_speed_increase.tscn")
@@ -49,12 +60,19 @@ func construct_enemies():
 		hp_sum += instance.health
 	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).max_value = hp_sum
 	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).value = hp_sum
+	
+	if has_node("../Music"):
+		get_node("../Music").queue_free()
+	var new_music = level_music[level].instantiate()
+	new_music.name = "Music"
+	get_parent().call_deferred("add_child", new_music)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var enemies_node = $Enemies
 	if !won && enemies_node.get_child_count() == 0:
 		won = true
+		play_chill_music()
 		add_random_cards()
 		card_selection.show_cards()
 		
@@ -63,3 +81,9 @@ func add_random_cards():
 		var card = cards[0].instantiate()
 		card.name = "Modifier"
 		child.add_child(card)
+
+func play_chill_music():
+	get_node("../Music").queue_free()
+	var new_music = chill_music_scene.instantiate()
+	new_music.name = "Music"
+	get_parent().add_child(new_music)

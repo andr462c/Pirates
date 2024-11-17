@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw134vesrkc21"]
+
+[ext_resource type="AudioStream" uid="uid://gwng6xmkfwlh" path="res://assets/sound_files/MegaRelaxTuneWithABitOfSeaShore.wav" id="1_y2vfv"]
+
+[node name="CalmBackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_y2vfv")
+autoplay = true
