@@ -20,6 +20,14 @@ func _process(delta: float) -> void:
 	pass
 
 
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		var physics_body = body as RigidBody2D
+		var to_boat = physics_body.position - position
+		var factor = min(1, 25 / (to_boat.length() + 0.1))
+		body.take_damage(damage * factor)
+
+
 func _on_knockback_area_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D:
 		var physics_body = body as RigidBody2D
@@ -28,6 +36,3 @@ func _on_knockback_area_body_entered(body: Node2D) -> void:
 		var impulse = inv_distance * to_boat.normalized()
 		
 		physics_body.apply_impulse(impulse * bomb_strength)
-		if body.has_method("take_damage"):
-			var factor = min(1, 25 / (to_boat.length() + 0.1))
-			body.take_damage(damage * factor)
