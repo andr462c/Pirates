@@ -6,7 +6,7 @@ var navy = preload("res://objects/enemies/navy_ship.tscn")
 
 @onready var card_selection = get_node("../CardSelectionWater")
 @export var level = 0
-@export var healthadder = 4
+@export var healthadder = 0.2
 @export var level_enemies = [
 	[fishboat],
 	[fishboat, fishboat],
