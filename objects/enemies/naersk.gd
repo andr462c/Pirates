@@ -7,7 +7,7 @@ var sprite: Sprite2D = $Sprite2D
 var sprite_modulator = $SpriteModulator
 
 @export
-var health = 1000
+var health = 200
 
 @onready
 var hit_sound = $NearskHitSound
@@ -25,5 +25,6 @@ func take_damage(damage: float):
 	health -= damage
 	hit_sound.play()
 	sprite_modulator.modulate(sprite)
+	get_node("/root/Main/Healthbars/EnemyHealth").value -= max(damage, 0)
 	if health <= 0:
 		queue_free()

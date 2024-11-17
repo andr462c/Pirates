@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://lipm85klv0ns" path="res://assets/boat/fishboat.png" id="2_rqmib"]
 [ext_resource type="PackedScene" uid="uid://doqs7cw0jqufe" path="res://objects/people/fisherman.tscn" id="3_6n3r5"]
 [ext_resource type="PackedScene" uid="uid://mebtfnyi5kyf" path="res://objects/enemies/EnemyMovement.tscn" id="4_lwue5"]
-[ext_resource type="PackedScene" path="res://objects/sprite_modulator.tscn" id="5_ssbst"]
-[ext_resource type="PackedScene" uid="uid://cu1sl1ay27bec" path="res://objects/sounds/wood_hit_sound.tscn" id="6_scghr"]
+[ext_resource type="PackedScene" uid="uid://bly38omb7mkvm" path="res://objects/sprite_modulator.tscn" id="5_ssbst"]
+[ext_resource type="PackedScene" path="res://objects/sounds/wood_hit_sound.tscn" id="6_scghr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0smk"]
 size = Vector2(35.5107, 64.0082)
