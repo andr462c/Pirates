@@ -14,6 +14,7 @@ var target_shoot_direction: Vector2
 var bullet_speed_multiplier = 1.0
 var scale_multiplier = 1.0
 var damage_multiplier = 1.0
+var jump_power = 0.1
 var jumping = false
 var z = 0.0
 var z_speed = 0
@@ -88,7 +89,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("key_jump_%d" % id) and not jumping and jumptimer.is_stopped():	
 		jump_sound.play()
 		jumping = true
-		z_speed = 0.1
+		z_speed = jump_power
 		set_collision_layer_value(1,false)
 		set_collision_mask_value(1,false)
 		
