@@ -20,7 +20,7 @@ var z = 0.0
 var z_speed = 0
 var colshape: CollisionShape2D
 var weapons = []
-@export var health = 50
+@export var health = 30
 var jumptimer: Timer
 @export var knockback = 10000
 var max_health = health

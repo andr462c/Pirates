@@ -20,6 +20,7 @@ var turret_up = preload("res://objects/modifiers/turret_upgrade.tscn")
 var knockback_up = preload("res://objects/modifiers/knockback.tscn")
 var bigger_stronger = preload("res://objects/modifiers/bigger_stronger.tscn")
 var healthbuf = preload("res://objects/modifiers/healthbuff.tscn")
+var jumpboost = preload("res://objects/modifiers/jumpboost.tscn")
 
 
 @onready var card_selection = get_node("../CardSelectionWater")
@@ -71,7 +72,8 @@ var cards = [
 	rpg_up,
 	knockback_up,
 	bigger_stronger,
-	healthbuf
+	healthbuf,
+	jumpboost
 ]	
 
 var won = false
