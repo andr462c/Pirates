@@ -79,6 +79,9 @@ var cards = [
 ]	
 
 var won = false
+var enemy_healthbar
+var enemy_healthbar_orig_size
+var enemy_healthbar_orig_x
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -109,6 +112,7 @@ func _ready() -> void:
 	next_level()
 	var camera = preload("res://objects/Camera.tscn")
 	add_child(camera.instantiate())
+	set_orig_healthbar()
 
 func next_level():
 	level += 1
@@ -143,11 +147,13 @@ func construct_enemies():
 		instance.global_position = Vector2(800, 600*(counter/len(enemies)))
 		enemy_node.add_child(instance)
 		hp_sum += instance.health
-	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).max_value = hp_sum
-	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).value = hp_sum
+	if enemy_healthbar == null:
+		set_orig_healthbar()
+	enemy_healthbar.max_value = hp_sum
+	enemy_healthbar.value = hp_sum
 	var hp_size_scaling = hp_sum/5
-	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).size.x += hp_size_scaling
-	(get_node("../Healthbars/EnemyHealth") as TextureProgressBar).position.x -= hp_size_scaling/2
+	enemy_healthbar.size.x = enemy_healthbar_orig_size + hp_size_scaling
+	enemy_healthbar.position.x = enemy_healthbar_orig_x - hp_size_scaling / 2
 	
 	if has_node("../Music"):
 		get_node("../Music").queue_free()
@@ -204,3 +210,8 @@ func revive_players():
 	if dead_player != null:
 		players.add_child(dead_player)
 		dead_player = null
+		
+func set_orig_healthbar():
+	enemy_healthbar = get_node("../Healthbars/EnemyHealth") as TextureProgressBar
+	enemy_healthbar_orig_size = enemy_healthbar.size.x
+	enemy_healthbar_orig_x = enemy_healthbar.position.x
