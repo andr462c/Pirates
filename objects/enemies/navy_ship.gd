@@ -62,7 +62,8 @@ func _process(delta: float) -> void:
 
 func take_damage(damage: float):
 	health -= damage
-	hit_sound.play()
+	if hit_sound != null:
+		hit_sound.play()
 	sprite_modulator.modulate(sprite)
 	if health <= 0:
 		queue_free()
